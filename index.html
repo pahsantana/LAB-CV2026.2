@@ -29,7 +29,7 @@
             background-color: var(--bg);
         }
 
-        /* Cabeçalho Sofisticado */
+        /* Cabeçalho */
         header {
             background: linear-gradient(135deg, var(--primary), var(--accent));
             color: var(--white);
@@ -131,21 +131,14 @@
 
         /* Indicador Sofisticado (+ / -) */
         .main-section summary .icon-toggle {
-            position: relative;
             width: 24px;
             height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--secondary);
-            font-size: 1.5rem;
-            font-weight: 400;
-            transition: transform 0.3s ease;
-        }
-
-        .main-section[open] summary .icon-toggle {
-            transform: rotate(45deg); /* Transiciona o + para virar um x/fechar de forma sutil */
-            color: #dc2626;
+            font-size: 1.6rem;
+            font-weight: 500;
         }
 
         .section-content {
@@ -175,7 +168,7 @@
             border-radius: 4px;
         }
 
-        /* Cards de Especificações (Sem Bullets) */
+        /* Cards de Especificações */
         .spec-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -417,9 +410,9 @@
 
         <!-- SEÇÃO 1: TEMA DO TRABALHO -->
         <details class="main-section" open>
-            <summary>
+            <summary onclick="toggleIcon(this)">
                 <span>1. Tema do Trabalho</span>
-                <span class="icon-toggle">+</span>
+                <span class="icon-toggle">−</span>
             </summary>
             
             <div class="section-content">
@@ -428,7 +421,8 @@
                 <p>O envelhecimento populacional traz desafios severos à segurança de idosos. Este projeto aplica câmeras monoculares fixas em tetos ou áreas de tráfego comum para identificar acidentes imediatamente. O diferencial crítico está na garantia de privacidade: o fluxo de imagens passa apenas por processamento matemático local e é descartado imediatamente na borda (*Edge Computing*), prevenindo qualquer vazamento de dados ou imagens íntimas.</p>
                 
                 <div class="story-box">
-                    <p><strong>Motivação Familiar Real:</strong> A urgência desta solução fundamenta-se em históricos severos do próprio grupo. Eventos reais envolveram uma avó materna que residia sozinha e permaneceu sem auxílio imediato após cair; um acidente grave de garagem sofrido por um avô paterno que fraturou o fêmur em quatro partes acompanhado de desmaio; e uma bisavó com Alzheimer que, após uma queda crítica próxima ao elevador, teve de ser transferida permanentemente para uma instituição especializada por conta da perda de mobilidade física. Tais ocorrências destacam quão vital é a velocidade no atendimento inicial.</p>
+                    <p><strong>Motivação Familiar Real (Histórico de Paloma):</strong> A urgência desta solução fundamenta-se diretamente em históricos familiares severos vividos pela integrante Paloma. O núcleo familiar possui um perfil de extrema longevidade, composto por familiares muito idosos: um avô de 90 anos, uma avó de 80 anos, tios-avós de 90, 93 e impressionantes 102 anos, além de sua bisavó com Alzheimer que faleceu com 99 anos. Eventos reais graves já acometeram o grupo, como sua avó materna que residia sozinha e permaneceu sem auxílio imediato após sofrer uma queda; um acidente grave na garagem sofrido por seu avô paterno, que resultou em desmaio e fratura do fêmur em quatro partes; e a bisavó que, após uma queda crítica próxima ao elevador, precisou de transferência permanente para uma instituição especializada devido à perda de mobilidade física.</p>
+                    <p>Por conta desses traumas e da quantidade expressiva de idosos na família, os parentes vivem checando as câmeras de segurança de casa em tempo real para garantir o bem-estar de todos. Essa necessidade diária destaca quão vital é a automação e a velocidade no atendimento inicial por meio da Visão Computacional, aliviando a carga psicológica do monitoramento humano ininterrupto e manual.</p>
                 </div>
 
                 <h3>Originalidade e Benefícios</h3>
@@ -505,7 +499,7 @@
                             </div>
                             <div class="qa-block">
                                 <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
-                                <p><em>"Seria a solução perfeita. Resolveria o nosso problem de segurança e daria paz de espírito para trabalhar, sem que eles se sentissem invadidos ou expostos."</em></p>
+                                <p><em>"Seria a solução perfeita. Resolveria o nosso problema de segurança e daria paz de espírito para trabalhar, sem que eles se sentissem invadidos ou expostos."</em></p>
                             </div>
                         </div>
                     </details>
@@ -587,7 +581,7 @@
 
         <!-- SEÇÃO 2: MODELAGEM FUNCIONAL E MÉTODOS DE ENGENHARIA -->
         <details class="main-section">
-            <summary>
+            <summary onclick="toggleIcon(this)">
                 <span>2. Modelagem Funcional e Métodos de Engenharia</span>
                 <span class="icon-toggle">+</span>
             </summary>
@@ -665,7 +659,7 @@
 
                 <h3>Método de Calibração Óptica</h3>
                 <p><strong>Resumo:</strong> Eliminação de distorções geométricas provocadas por lentes grande-angulares utilizando alvos planares.</p>
-                <p>O protótipo utilizará o <strong>Método de Zhang</strong> (capturas consecutivas de um padrão de xadrez). O algoritmo computará os seguintes parâmetros para retificação prévia:</p>
+                <p>O protótipo utilizará o <strong>Método de Zhang</strong> (capturas consecutiveis de um padrão de xadrez). O algoritmo computará os seguintes parâmetros para retificação prévia:</p>
                 
                 <div class="spec-grid">
                     <div class="spec-card" style="border-top-color: #10b981;">
@@ -721,6 +715,19 @@
     <footer>
         <p>&copy; 2026 - Projeto de Visão Computacional </p>
     </footer>
+
+    <!-- Script leve para gerenciar a troca dos ícones + e - -->
+    <script>
+        function toggleIcon(summaryElement) {
+            const details = summaryElement.parentElement;
+            const icon = summaryElement.querySelector('.icon-toggle');
+            if (!details.hasAttribute('open')) {
+                icon.textContent = '−';
+            } else {
+                icon.textContent = '+';
+            }
+        }
+    </script>
 
 </body>
 </html>
