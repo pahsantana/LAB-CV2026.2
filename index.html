@@ -13,6 +13,7 @@
             --white: #ffffff;
             --light-gray: #f1f5f9;
             --accent: #1e3a8a;
+            --border: #e2e8f0;
         }
 
         * {
@@ -28,72 +29,142 @@
             background-color: var(--bg);
         }
 
+        /* Cabeçalho Sofisticado */
         header {
             background: linear-gradient(135deg, var(--primary), var(--accent));
             color: var(--white);
             padding: 3rem 2rem;
-            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
         }
 
         header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
-        .meta-info {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-top: 1rem;
-            line-height: 1.8;
-        }
-
-        .integrantes-list {
-            margin-top: 0.8rem;
+        .project-title {
+            font-size: 1.2rem;
+            opacity: 0.95;
             font-weight: 500;
-            list-style: none;
+            border-left: 3px solid var(--secondary);
+            padding-left: 0.75rem;
+            color: #f1f5f9;
         }
 
-        .integrantes-list li {
-            margin-bottom: 0.3rem;
+        .meta-grid {
+            margin-top: 0.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .integrantes-box h4 {
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .integrantes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.5rem;
+            color: #e2e8f0;
+            font-size: 0.95rem;
         }
 
         main {
             max-width: 1000px;
-            margin: 2rem auto;
+            margin: 0 auto;
             padding: 0 1.5rem;
         }
 
-        section {
+        /* Seções Clicáveis e Expansíveis Principais */
+        .main-section {
             background-color: var(--white);
-            padding: 2.5rem;
             border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(15, 23, 42, 0.04);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        section h2 {
+        .main-section[open] {
+            border-color: var(--secondary);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.08);
+        }
+
+        .main-section summary {
+            padding: 1.75rem 2rem;
+            font-size: 1.35rem;
+            font-weight: 700;
             color: var(--primary);
-            border-bottom: 3px solid var(--secondary);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.6rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            background-color: var(--white);
+            transition: background-color 0.2s ease;
         }
 
-        section h3 {
+        .main-section summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .main-section summary:hover {
+            background-color: var(--light-gray);
+        }
+
+        /* Indicador Sofisticado (+ / -) */
+        .main-section summary .icon-toggle {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--secondary);
-            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.5rem;
+            font-weight: 400;
+            transition: transform 0.3s ease;
+        }
+
+        .main-section[open] summary .icon-toggle {
+            transform: rotate(45deg); /* Transiciona o + para virar um x/fechar de forma sutil */
+            color: #dc2626;
+        }
+
+        .section-content {
+            padding: 0 2rem 2.5rem 2rem;
+            border-top: 1px solid var(--border);
+            background-color: var(--white);
+        }
+
+        /* Subtítulos dentro do conteúdo */
+        h3 {
+            color: var(--secondary);
+            margin: 2rem 0 0.75rem 0;
             font-size: 1.25rem;
+            font-weight: 600;
         }
 
-        ul, ol {
-            margin-left: 2rem;
+        p {
             margin-bottom: 1rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
+            text-align: justify;
         }
 
         .story-box {
@@ -104,66 +175,84 @@
             border-radius: 4px;
         }
 
-        /* Estrutura das Entrevistas Retráteis */
+        /* Cards de Especificações (Sem Bullets) */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-card {
+            background: var(--light-gray);
+            padding: 1.25rem;
+            border-radius: 6px;
+            border-top: 3px solid var(--secondary);
+        }
+
+        .spec-card strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .spec-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        /* Entrevistas Internas */
         .interview-container {
             margin-top: 1.5rem;
         }
 
-        details {
+        .sub-details {
             background-color: var(--light-gray);
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border);
             border-radius: 6px;
             margin-bottom: 1rem;
             overflow: hidden;
-            transition: all 0.3s ease;
         }
 
-        details[open] {
+        .sub-details[open] {
             background-color: var(--white);
-            border-color: var(--secondary);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-color: #cbd5e1;
         }
 
-        summary {
-            padding: 1.2rem;
+        .sub-details summary {
+            padding: 1.1rem 1.5rem;
+            font-size: 1rem;
             font-weight: 600;
+            text-transform: none;
+            letter-spacing: 0;
             color: var(--primary);
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
+            background-color: var(--light-gray);
         }
 
-        summary::-webkit-details-marker {
-            display: none;
+        .sub-details summary:hover {
+            background-color: #e2e8f0;
         }
 
-        summary::after {
+        .sub-details summary::after {
             content: "➔ Expandir";
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--secondary);
             background-color: #e0f2fe;
-            padding: 0.3rem 0.6rem;
+            padding: 0.25rem 0.5rem;
             border-radius: 4px;
-            transition: transform 0.2s ease;
         }
 
-        details[open] summary::after {
+        .sub-details[open] summary::after {
             content: "➔ Recolher";
             background-color: #fee2e2;
             color: #dc2626;
         }
 
-        summary:hover {
-            background-color: #edf2f7;
-        }
-
         .interview-content {
             padding: 1.5rem;
-            border-top: 1px solid #e2e8f0;
-            background-color: var(--white);
+            border-top: 1px solid var(--border);
         }
 
         .interview-profile {
@@ -193,287 +282,439 @@
             border-left: 3px solid #cbd5e1;
         }
 
-        .diagram-box {
-            background: #1e293b;
-            color: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 6px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            overflow-x: auto;
-            line-height: 1.5;
+        /* Fluxograma */
+        .flow-wrapper {
+            background-color: #1e293b;
+            padding: 2rem;
+            border-radius: 8px;
             margin: 1.5rem 0;
+        }
+
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .flow-row {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                gap: 2rem;
+            }
+            .flow-node { width: 45%; margin-bottom: 0; }
+            .flow-arrow-down { display: none; }
+            .flow-arrow-right { display: flex; align-items: center; justify-content: center; color: #38bdf8; font-size: 1.5rem; }
+        }
+
+        @media (max-width: 767px) {
+            .flow-row { display: flex; flex-direction: column; width: 100%; gap: 1.5rem; }
+            .flow-node { width: 100%; }
+            .flow-arrow-right { display: none; }
+            .flow-arrow-down { display: block; text-align: center; color: #38bdf8; font-size: 1.5rem; margin: -0.5rem 0; }
+        }
+
+        .flow-node {
+            background: #334155;
+            border-left: 4px solid #38bdf8;
+            padding: 1rem;
+            border-radius: 4px;
+            color: #f8fafc;
+        }
+
+        .flow-node .node-title {
+            font-family: monospace;
+            font-weight: bold;
+            color: #38bdf8;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .flow-node .node-desc {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        .flow-connector-vertical {
+            color: #38bdf8;
+            font-size: 1.5rem;
+            margin: -0.5rem 0;
+        }
+
+        /* Fórmulas */
+        .math-inline {
+            font-family: "Times New Roman", Times, serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            padding: 0 0.2rem;
+        }
+
+        .math-block {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            font-family: "Times New Roman", Times, serif;
+            font-style: italic;
+            margin: 0 0.25rem;
+        }
+
+        .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            padding: 0 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        .numerator {
+            border-bottom: 1px solid var(--text);
+            padding-bottom: 1px;
+        }
+
+        .denominator {
+            padding-top: 1px;
         }
 
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
             background-color: var(--primary);
             color: var(--white);
-            margin-top: 4rem;
+            margin-top: 5rem;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>ESZA019 - Visão Computacional Aplicada</h1>
-        <div class="meta-info">
-            <p><strong>Título do Trabalho:</strong> Sistema Inteligente de Monitoramento e Aviso de Queda de Idosos Doméstico e em ILPIs</p>
-            <p><strong>Disciplina:</strong> ESZA019 - Visão Computacional</p>
+        <div class="header-container">
+            <h1>ESZA019 - Visão Computacional Aplicada</h1>
+            <div class="project-title">
+                Projeto: Sistema Inteligente de Monitoramento e Aviso de Queda de Idosos Doméstico e em ILPIs
+            </div>
             
-            <ul class="integrantes-list">
-                <li>Eduarda Alexandre de Salles — RA: 11202320551</li>
-                <li>Gustavo de Paula Souza — RA: 11202130568</li>
-                <li>Paloma Cristina Santana — RA: 11201921396</li>
-            </ul>
+            <div class="meta-grid">
+                <div class="integrantes-box">
+                    <h4>Equipe de Desenvolvimento</h4>
+                    <div class="integrantes-grid">
+                        <span>Eduarda Alexandre de Salles — RA: 11202320551</span>
+                        <span>Gustavo de Paula Souza — RA: 11202130568</span>
+                        <span>Paloma Cristina Santana — RA: 11201921396</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
     <main>
 
         <!-- SEÇÃO 1: TEMA DO TRABALHO -->
-        <section id="tema-trabalho">
-            <h2>1. Tema do Trabalho</h2>
+        <details class="main-section" open>
+            <summary>
+                <span>1. Tema do Trabalho</span>
+                <span class="icon-toggle">+</span>
+            </summary>
             
-            <h3>Descrição do Contexto e Cenário de Aplicação</h3>
-            <p>O envelhecimento populacional impõe desafios severos à segurança de idosos que vivem de forma independente ou em Instituições de Longa Permanência para Idosos (ILPIs). O cenário de aplicação deste projeto abrange tanto residências onde o idoso permanece desacompanhado por longos períodos quanto quartos e corredores de ILPIs. O foco está na detecção precoce de quedas de nível, um dos acidentes domésticos mais críticos para a integridade física na terceira idade. O sistema utilizará sensores ópticos (câmeras monoculares fixas) instalados em áreas de convívio comum e tráfego, realizando o processamento local para garantir que o fluxo de imagem seja descartado imediatamente após a análise matemática estrutural.</p>
-            
-            <div class="story-box">
-                <p><strong>Justificativa e Motivação Real:</strong> A motivação para o desenvolvimento deste sistema provém de históricos de acidentes severos dentro do núcleo familiar dos integrantes da equipe. Situações reais envolveram a queda de uma avó materna que residia sozinha e permaneceu sem auxílio imediato, e um acidente grave na garagem sofrido por um avô paterno que resultou na fratura do fêmur em quatro partes e episódios subsequentes de desmaio. Adicionalmente, uma bisavó materna diagnosticada com Alzheimer sofreu uma queda crítica próxima ao elevador residencial, cuja gravidade da fratura de fêmur impossibilitou a continuidade dos cuidados domiciliares, exigindo sua transferência definitiva para uma instituição especializada. Esses eventos destacam a vulnerabilidade e a imprevisibilidade física na terceira idade.</p>
+            <div class="section-content">
+                <h3>Contexto e Cenário</h3>
+                <p><strong>Resumo:</strong> Monitoramento óptico passivo em tempo real focado em ambientes residenciais e Instituições de Longa Permanência (ILPIs) para detecção de quedas sem o uso de dispositivos vestíveis.</p>
+                <p>O envelhecimento populacional traz desafios severos à segurança de idosos. Este projeto aplica câmeras monoculares fixas em tetos ou áreas de tráfego comum para identificar acidentes imediatamente. O diferencial crítico está na garantia de privacidade: o fluxo de imagens passa apenas por processamento matemático local e é descartado imediatamente na borda (*Edge Computing*), prevenindo qualquer vazamento de dados ou imagens íntimas.</p>
+                
+                <div class="story-box">
+                    <p><strong>Motivação Familiar Real:</strong> A urgência desta solução fundamenta-se em históricos severos do próprio grupo. Eventos reais envolveram uma avó materna que residia sozinha e permaneceu sem auxílio imediato após cair; um acidente grave de garagem sofrido por um avô paterno que fraturou o fêmur em quatro partes acompanhado de desmaio; e uma bisavó com Alzheimer que, após uma queda crítica próxima ao elevador, teve de ser transferida permanentemente para uma instituição especializada por conta da perda de mobilidade física. Tais ocorrências destacam quão vital é a velocidade no atendimento inicial.</p>
+                </div>
+
+                <h3>Originalidade e Benefícios</h3>
+                <p>Dispositivos de mercado exigem relógios ou botões de pânico, que idosos frequentemente esquecem de carregar, retiram para dormir/tomar banho, ou ficam incapacitados de acionar em traumas severos. Ao transferir a inteligência para a infraestrutura do ambiente através da Visão Computacional, elimina-se qualquer barreira física ou cognitiva do usuário final. Isso minimiza drasticamente o tempo de socorro e otimiza as escalas de cuidadores em ILPIs.</p>
+
+                <h3>Fase de Empatia: Roteiro de Entrevistas</h3>
+                <p>Consolidação metodológica com 6 perfis estratégicos: 2 usuários idosos finais e 4 familiares responsáveis diretos. Expanda os painéis internos para visualizar as respostas completas:</p>
+                
+                <div class="interview-container">
+                    <!-- Entrevista 1 -->
+                    <details class="sub-details">
+                        <summary>Entrevista 01: Usuário Final (Idoso 1)</summary>
+                        <div class="interview-content">
+                            <div class="interview-profile">Perfil: Idoso de 76 anos, independente, reside sozinho em ambiente urbano.</div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança no dia a dia?</strong></p>
+                                <p><em>"Meu medo é passar mal repentinamente, cair no corredor ou perto da cozinha e não conseguir alcançar o telefone para pedir ajuda aos meus filhos."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
+                                <p><em>"Eu não gosto de usar nada preso no meu corpo. Me sinto vigiado, o relógio incomoda a pele no calor e eu tiro tudo para dormir. Se eu cair levantando de madrugada, o aparelho vai estar na tomada carregando."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
+                                <p><em>"Não aceito de jeito nenhum uma câmera de TV me filmando dentro da minha própria casa. Parece que perdi minha liberdade e que estão me espiando o tempo todo."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
+                                <p><em>"Se o sistema enxergar apenas linhas matemáticas e pontos, sem mostrar meu rosto ou o que estou fazendo, eu aceitaria colocar um no teto da sala e outro no corredor sem problemas."</em></p>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Entrevista 2 -->
+                    <details class="sub-details">
+                        <summary>Entrevista 02: Usuário Final (Idoso 2)</summary>
+                        <div class="interview-content">
+                            <div class="interview-profile">Perfil: Idosa de 79 anos, possui limitações leves de locomoção e reside com familiares.</div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança no dia a dia?</strong></p>
+                                <p><em>"Tenho muito medo de escorregar quando estou sozinha em algum cômodo e fraturar algo. Às vezes o joelho falha do nada e perco o equilíbrio."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
+                                <p><em>"Eles me incomodam fisicamente. O colar fica batendo no peito quando abaixo e o relógio eu acabo esquecendo de colocar de manhã. No momento do susto de uma queda, duvido que eu lembraria de apertar um botãozinho."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
+                                <p><em>"Acho muito invasivo. A nossa casa é o nosso refúgio, e ficar sob os olhos de uma lente comum tira totalmente o sossego e a privacidade da família."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
+                                <p><em>"Sendo assim, vira um sensor de proteção, não uma espionagem. Eu aceitaria perfeitamente porque agilizaria o aviso para os meus filhos caso eu caia e fique incapacitada."</em></p>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Entrevista 3 -->
+                    <details class="sub-details">
+                        <summary>Entrevista 03: Familiar (Mãe da Integrante)</summary>
+                        <div class="interview-content">
+                            <div class="interview-profile">Perfil: Cuidadora familiar indireta, lida com a preocupação constante da segurança dos pais idosos.</div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança do idoso sob sua responsabilidade?</strong></p>
+                                <p><em>"O meu pânico diário é acontecer um acidente grave e eles passarem horas jogados no chão sem conseguir pedir socorro enquanto estamos trabalhando."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
+                                <p><em>"Tentamos implementar o colar de pânico, mas não funcionou. Eles esquecem de recarregar a bateria, acham desconfortável para dormir e o dispositivo acaba ficando na gaveta."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
+                                <p><em>"Eles barram imediatamente por vergonha e violação de privacidade. Monitorar os cômodos com imagem real gera uma resistência enorme da parte deles."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
+                                <p><em>"Seria a solução perfeita. Resolveria o nosso problem de segurança e daria paz de espírito para trabalhar, sem que eles se sentissem invadidos ou expostos."</em></p>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Entrevista 4 -->
+                    <details class="sub-details">
+                        <summary>Entrevista 04: Familiar (Pai da Integrante)</summary>
+                        <div class="interview-content">
+                            <div class="interview-profile">Perfil: Familiar que acompanha de perto o histórico de saúde e quedas na árvore genealógica.</div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança do idoso sob sua responsabilidade?</strong></p>
+                                <p><em>"A velocidade do socorro. Como já tivemos episódios graves de fratura de fêmur na família, sei bem que cada minuto que o idoso passa no chão agrava drasticamente o quadro clínico."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
+                                <p><em>"Acho a eficiência baixa porque depende da ação humana voluntária. Se o idoso desmaiar ou entrar em choque, o botão no pulso não serve para absolutamente nada."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
+                                <p><em>"O perigo de vazamento de imagens na internet e o desconforto psicológico de se sentir vigiado 24 horas por dia dentro da própria casa."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
+                                <p><em>"Eu apoiaria totalmente. Se o processamento for puramente local e matemático, elimina o risco de privacidade e foca estritamente em salvar vidas de forma automatizada."</em></p>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Entrevista 5 -->
+                    <details class="sub-details">
+                        <summary>Entrevista 05: Familiar (Mãe do Colega)</summary>
+                        <div class="interview-content">
+                            <div class="interview-profile">Perfil: Familiar responsável por gerenciar a rotina de avós que passam períodos sozinhos.</div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança do idoso sob sua responsabilidade?</strong></p>
+                                <p><em>"O medo de quedas silenciosas em locais como corredores ou garagens, onde eles costumam ir sem avisar ninguém e onde o monitoramento visual direto é difícil."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
+                                <p><em>"A maioria dos idosos mais velhos rejeita esses aparelhos. Eles acham confuso mexer em telas de relógios modernos e reclamam do peso ou de alergias na pele causadas pelas pulseiras."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
+                                <p><em>"Eles sentem que estão perdendo a pouca independência que resta. Câmeras comuns trazem uma sensação de invalidez que os deixa muito chateados."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
+                                <p><em>"A aceitação seria excelente. Funciona como um alarme residencial comum, mas inteligente o suficiente para entender uma queda. É o equilíbrio perfeito entre respeito e proteção."</em></p>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Entrevista 6 -->
+                    <details class="sub-details">
+                        <summary>Entrevista 06: Familiar (Pai do Colega)</summary>
+                        <div class="interview-content">
+                            <div class="interview-profile">Perfil: Familiar focado na viabilidade prática e técnica de soluções domésticas de proteção.</div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança do idoso sob sua responsabilidade?</strong></p>
+                                <p><em>"A incapacidade de monitorar o ambiente em tempo real sem precisar de um cuidador físico contratado por 24 horas, o que financeiramente pesa muito."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
+                                <p><em>"Dispositivos que dependem de carregar bateria todo dia falham na mão de idosos. Se eles esquecerem de plugar na tomada, o sistema de proteção morre ali."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
+                                <p><em>"Problemas legais e éticos sobre exposição e armazenamento de gravações privadas, além da complexidade técnica de ficar transmitindo vídeo pesado na rede o dia todo."</em></p>
+                            </div>
+                            <div class="qa-block">
+                                <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
+                                <p><em>"Como uma solução técnica de engenharia, faz todo o sentido. Roda local, consome pouca banda, protege a identidade do idoso e entrega o alarme rápido. Eu aprovo o conceito."</em></p>
+                            </div>
+                        </div>
+                    </details>
+                </div>
             </div>
+        </details>
 
-            <h3>Originalidade</h3>
-            <p>A originalidade do tema reside na abordagem passiva e invisível de monitoramento. Dispositivos comerciais usam sensores vestíveis (como acelerômetros em smartwatches ou colares de pânico), que apresentam baixa taxa de adesão prática. Idosos frequentemente esquecem de equipá-los, removem-nos devido a desconfortos ou durante o banho e o repouso (momentos críticos de queda), ou ficam incapacitados de acioná-los mecanicamente em cenários de desmaio ou traumas cognitivos severos, como em pacientes com Alzheimer. Ao transferir a inteligência para o ambiente através da Visão Computacional, elimina-se qualquer barreira física ou de memória por parte do usuário final.</p>
-
-            <h3>Benefícios Oferecidos</h3>
-            <ul>
-                <li><strong>Redução do Tempo de Socorro:</strong> Mitigação do "atendimento tardio", fator que agrava sequelas de fraturas e episódios de desidratação ou hipotermia pós-queda.</li>
-                <li><strong>Garantia de Privacidade:</strong> O algoritmo converte a imagem raw em representações geométricas abstratas (bounding boxes e vetores de articulação), impossibilitando o vazamento de imagens íntimas ou identificação facial fora do ambiente local.</li>
-                <li><strong>Autonomação para Cuidadores:</strong> Otimização da escala de monitoramento em ILPIs, alertando a central de enfermagem apenas em desvios comportamentais críticos.</li>
-            </ul>
-
-            <h3>Fase de Empatia: Entrevistas Padronizadas</h3>
-            <p>Para fundamentar os requisitos do sistema, aplicamos um roteiro metodológico estruturado com 6 perfis familiares estratégicos: 2 usuários idosos finais e 4 familiares responsáveis diretos (os pais dos integrantes do grupo). Clique em cada painel para expandir as respostas:</p>
+        <!-- SEÇÃO 2: MODELAGEM FUNCIONAL E MÉTODOS DE ENGENHARIA -->
+        <details class="main-section">
+            <summary>
+                <span>2. Modelagem Funcional e Métodos de Engenharia</span>
+                <span class="icon-toggle">+</span>
+            </summary>
             
-            <div class="interview-container">
+            <div class="section-content">
+                <h3>Requisitos do Sistema</h3>
+                <p><strong>Resumo:</strong> Parâmetros mínimos de engenharia estruturados para garantir aquisição veloz e integridade local.</p>
+                
+                <div class="spec-grid">
+                    <div class="spec-card">
+                        <strong>RF01 - Taxa de Captura</strong>
+                        <p>Aquisição estável mínima de 15 frames por segundo (FPS) sob resolução nativa de 640x480 pixels.</p>
+                    </div>
+                    <div class="spec-card">
+                        <strong>RF02 - Extração de Pose</strong>
+                        <p>Isolamento contínuo da Bounding Box do indivíduo e rastreamento de coordenadas do centro de massa.</p>
+                    </div>
+                    <div class="spec-card">
+                        <strong>RF03 - Análise Temporal</strong>
+                        <p>Variação dinâmica da altura da caixa para distinguir uma descida controlada de um vetor abrupto.</p>
+                    </div>
+                    <div class="spec-card">
+                        <strong>RF04 - Subsistema de Alerta</strong>
+                        <p>Ativação de flag de segurança se a silhueta geométrica mantiver inércia horizontal por mais de 15 segundos.</p>
+                    </div>
+                    <div class="spec-card" style="border-top-color: #eab308;">
+                        <strong>RNF01 - Edge Computing</strong>
+                        <p>Inferência computada estritamente em hardware local, eliminando transmissões em rede ou nuvem.</p>
+                    </div>
+                    <div class="spec-card" style="border-top-color: #eab308;">
+                        <strong>RNF02 - Adaptabilidade Luminosa</strong>
+                        <p>Filtros robustos para operar sob variações de luz artificial interna e projeções de sombras.</p>
+                    </div>
+                </div>
 
-                <!-- Entrevista 1 -->
-                <details>
-                    <summary>Entrevista 01: Usuário Final (Idoso 1)</summary>
-                    <div class="interview-content">
-                        <div class="interview-profile">Perfil: Idoso de 76 anos, independente, reside sozinho em ambiente urbano.</div>
-                        
-                        <div class="qa-block">
-                            <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança no dia a dia?</strong></p>
-                            <p><em>"Meu medo é passar mal repentinamente, cair no corredor ou perto da cozinha e não conseguir alcançar o telefone para pedir ajuda aos meus filhos."</em></p>
+                <h3>Arquitetura Lógica e Diagrama</h3>
+                <p>A arquitetura divide-se sequencialmente em: captação e ruídos (Módulo 1); segmentação da silhueta por delimitação retangular (Módulo 2); cálculo das taxas de aspecto (Largura/Altura) e velocidades verticais (Módulo 3); e comutação da porta lógica de emergência (Módulo 4).</p>
+
+                <div class="flow-wrapper">
+                    <div class="flow-container">
+                        <div class="flow-row">
+                            <div class="flow-node">
+                                <div class="node-title">Câmera Monocular</div>
+                                <div class="node-desc">(Sensor Edge - Aquisição de Imagem)</div>
+                            </div>
+                            <div class="flow-arrow-right">➔</div>
+                            <div class="flow-arrow-down">▼</div>
+                            <div class="flow-node">
+                                <div class="node-title">Pré-Processamento</div>
+                                <div class="node-desc">(Filtro Gaussiano e Tons de Cinza)</div>
+                            </div>
                         </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
-                            <p><em>"Eu não gosto de usar nada preso no meu corpo. Me sinto vigiado, o relógio incomoda a pele no calor e eu tiro tudo para dormir. Se eu cair levantando de madrugada, o aparelho vai estar na tomada carregando."</em></p>
+                        <div class="flow-connector-vertical">▼</div>
+                        <div class="flow-row">
+                            <div class="flow-node">
+                                <div class="node-title">Segmentação e Pose</div>
+                                <div class="node-desc">(Bounding Box e Extração do Centroide)</div>
+                            </div>
+                            <div class="flow-arrow-right">➔</div>
+                            <div class="flow-arrow-down">▼</div>
+                            <div class="flow-node">
+                                <div class="node-title">Mapeamento de Variáveis</div>
+                                <div class="node-desc">(Cálculo de Razão de Aspecto e Vel. Vertical)</div>
+                            </div>
                         </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
-                            <p><em>"Não aceito de jeito nenhum uma câmera de TV me filmando dentro da minha própria casa. Parece que perdi minha liberdade e que estão me espiando o tempo todo."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
-                            <p><em>"Se o sistema enxergar apenas linhas matemáticas e pontos, sem mostrar meu rosto ou o que estou fazendo, eu aceitaria colocar um no teto da sala e outro no corredor sem problemas."</em></p>
+                        <div class="flow-connector-vertical">▼</div>
+                        <div class="flow-row">
+                            <div class="flow-node" style="border-left-color: #f43f5e; width: 100%;">
+                                <div class="node-title" style="color: #f43f5e;">Lógica de Decisão e Alerta</div>
+                                <div class="node-desc">(Análise de Limiares de Inércia e Disparo de Flag)</div>
+                            </div>
                         </div>
                     </div>
-                </details>
+                </div>
 
-                <!-- Entrevista 2 -->
-                <details>
-                    <summary>Entrevista 02: Usuário Final (Idoso 2)</summary>
-                    <div class="interview-content">
-                        <div class="interview-profile">Perfil: Idosa de 79 anos, possui limitações leves de locomoção e reside com familiares.</div>
-                        
-                        <div class="qa-block">
-                            <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança no dia a dia?</strong></p>
-                            <p><em>"Tenho muito medo de escorregar quando estou sozinha em algum cômodo e fraturar algo. Às vezes o joelho falha do nada e perco o equilíbrio."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
-                            <p><em>"Eles me incomodam fisicamente. O colar fica batendo no peito quando abaixo e o relógio eu acabo esquecendo de colocar de manhã. No momento do susto de uma queda, duvido que eu lembraria de apertar um botãozinho."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
-                            <p><em>"Acho muito invasivo. A nossa casa é o nosso refúgio, e ficar sob os olhos de uma lente comum tira totalmente o sossego e a privacidade da família."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
-                            <p><em>"Sendo assim, vira um sensor de proteção, não uma espionagem. Eu aceitaria perfeitamente porque agilizaria o aviso para os meus filhos caso eu caia e fique incapacitada."</em></p>
-                        </div>
+                <h3>Método de Calibração Óptica</h3>
+                <p><strong>Resumo:</strong> Eliminação de distorções geométricas provocadas por lentes grande-angulares utilizando alvos planares.</p>
+                <p>O protótipo utilizará o <strong>Método de Zhang</strong> (capturas consecutivas de um padrão de xadrez). O algoritmo computará os seguintes parâmetros para retificação prévia:</p>
+                
+                <div class="spec-grid">
+                    <div class="spec-card" style="border-top-color: #10b981;">
+                        <strong>Parâmetros Intrínsecos (<span class="math-inline">A</span>)</strong>
+                        <p>Mapeia os comprimentos focais estruturais (<span class="math-inline">f<sub>x</sub>, f<sub>y</sub></span>) e o centro óptico da imagem (<span class="math-inline">c<sub>x</sub>, c<sub>y</sub></span>).</p>
                     </div>
-                </details>
-
-                <!-- Entrevista 3 -->
-                <details>
-                    <summary>Entrevista 03: Familiar (Mãe da Integrante)</summary>
-                    <div class="interview-content">
-                        <div class="interview-profile">Perfil: Cuidadora familiar indireta, lida com a preocupação constante da segurança dos pais idosos.</div>
-                        
-                        <div class="qa-block">
-                            <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança do idoso sob sua responsabilidade?</strong></p>
-                            <p><em>"O meu pânico diário é acontecer um acidente grave e eles passarem horas jogados no chão sem conseguir pedir socorro enquanto estamos trabalhando."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
-                            <p><em>"Tentamos implementar o colar de pânico, mas não funcionou. Eles esquecem de recarregar a bateria, acham desconfortável para dormir e o dispositivo acaba ficando gaveta."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
-                            <p><em>"Eles barram imediatamente por vergonha e violação de privacidade. Monitorar os cômodos com imagem real gera uma resistência enorme da parte deles."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
-                            <p><em>"Seria a solução perfeita. Resolveria o nosso problema de segurança e daria paz de espírito para trabalhar, sem que eles se sentissem invadidos ou expostos."</em></p>
-                        </div>
+                    <div class="spec-card" style="border-top-color: #10b981;">
+                        <strong>Coeficientes de Lente (<span class="math-inline">k, p</span>)</strong>
+                        <p>Vetores radiais (<span class="math-inline">k<sub>1</sub>, k<sub>2</sub></span>) e tangenciais (<span class="math-inline">p<sub>1</sub>, p<sub>2</sub></span>) para corrigir aberrações de borda.</p>
                     </div>
-                </details>
-
-                <!-- Entrevista 4 -->
-                <details>
-                    <summary>Entrevista 04: Familiar (Pai da Integrante)</summary>
-                    <div class="interview-content">
-                        <div class="interview-profile">Perfil: Familiar que acompanha de perto o histórico de saúde e quedas na árvore genealógica.</div>
-                        
-                        <div class="qa-block">
-                            <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança do idoso sob sua responsabilidade?</strong></p>
-                            <p><em>"A velocidade do socorro. Como já tivemos episódios graves de fratura de fêmur na família, sei bem que cada minuto que o idoso passa no chão agrava drasticamente o quadro clínico."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
-                            <p><em>"Acho a eficiência baixa porque depende da ação humana voluntária. Se o idoso desmaiar ou entrar em choque, o botão no pulso não serve para absolutamente nada."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
-                            <p><em>"O perigo de vazamento de imagens na internet e o desconforto psicológico de se sentir vigiado 24 horas por dia dentro da própria casa."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
-                            <p><em>"Eu apoiaria totalmente. Se o processamento for puramente local e matemático, elimina o risco de privacidade e foca estritamente em salvar vidas de forma automatizada."</em></p>
-                        </div>
+                    <div class="spec-card" style="border-top-color: #10b981;">
+                        <strong>Matriz de Homografia</strong>
+                        <p>Equaciona o plano do sensor ao plano de solo real, convertendo deslocamentos de pixels em metros.</p>
                     </div>
-                </details>
+                </div>
 
-                <!-- Entrevista 5 -->
-                <details>
-                    <summary>Entrevista 05: Familiar (Mãe do Colega)</summary>
-                    <div class="interview-content">
-                        <div class="interview-profile">Perfil: Familiar responsável por gerenciar a rotina de avós que passam períodos sozinhos.</div>
-                        
-                        <div class="qa-block">
-                            <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança do idoso sob sua responsabilidade?</strong></p>
-                            <p><em>"O medo de quedas silenciosas em locais como corredores ou garagens, onde eles costumam ir sem avisar ninguém e onde o monitoramento visual direto é difícil."</em></p>
+                <h3>Avaliação Funcional e Métricas</h3>
+                <p><strong>Resumo:</strong> Ensaios práticos controlados com voluntários executando Atividades de Vida Diária (AVDs) e quedas simuladas para tabulação estatística.</p>
+                <p>Os resultados extraídos da matriz de confusão guiarão o refinamento matemático pelas métricas estruturadas abaixo:</p>
+
+                <div class="spec-grid">
+                    <div class="spec-card" style="border-top-color: #a855f7;">
+                        <strong>Sensibilidade (Recall)</strong>
+                        <div style="margin: 0.5rem 0;">
+                            <div class="math-block">
+                                <div class="fraction">
+                                    <span class="numerator">VP</span>
+                                    <span class="denominator">VP + FN</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
-                            <p><em>"A maioria dos idosos mais velhos rejeita esses aparelhos. Eles acham confuso mexer em telas de relógios modernos e reclamam do peso ou de alergias na pele causadas pelas pulseiras."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
-                            <p><em>"Eles sentem que estão perdendo a pouca independência que resta. Câmeras comuns trazem uma sensação de invalidez que os deixa muito chateados."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
-                            <p><em>"A aceitação seria excelente. Funciona como um alarme residencial comum, mas inteligente o suficiente para entender uma queda. É o equilíbrio perfeito entre respeito e proteção."</em></p>
-                        </div>
+                        <p>Mede a taxa de sucesso em detectar quedas reais. O foco é zerar os Falsos Negativos (FN).</p>
                     </div>
-                </details>
-
-                <!-- Entrevista 6 -->
-                <details>
-                    <summary>Entrevista 06: Familiar (Pai do Colega)</summary>
-                    <div class="interview-content">
-                        <div class="interview-profile">Perfil: Familiar focado na viabilidade prática e técnica de soluções domésticas de proteção.</div>
-                        
-                        <div class="qa-block">
-                            <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança do idoso sob sua responsabilidade?</strong></p>
-                            <p><em>"A incapacidade de monitorar o ambiente em tempo real sem precisar de um cuidador físico contratado por 24 horas, o que financeiramente pesa muito."</em></p>
+                    
+                    <div class="spec-card" style="border-top-color: #a855f7;">
+                        <strong>Precisão</strong>
+                        <div style="margin: 0.5rem 0;">
+                            <div class="math-block">
+                                <div class="fraction">
+                                    <span class="numerator">VP</span>
+                                    <span class="denominator">VP + FP</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
-                            <p><em>"Dispositivos que dependem de carregar bateria todo dia falham na mão de idosos. Se eles esquecerem de plugar na tomada, o sistema de proteção morre ali."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
-                            <p><em>"Problemas legais e éticos sobre exposição e armazenamento de gravações privadas, além da complexidade técnica de ficar transmitindo vídeo pesado na rede o dia todo."</em></p>
-                        </div>
-                        <div class="qa-block">
-                            <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
-                            <p><em>"Como uma solução técnica de engenharia, faz todo o sentido. Roda local, consome pouca banda, protege a identidade do idoso e entrega o alarme rápido. Eu aprovo o conceito."</em></p>
-                        </div>
+                        <p>Mede o índice de alarmes verdadeiros, monitorando o impacto de Falsos Positivos (FP) no cotidiano.</p>
                     </div>
-                </details>
-
+                </div>
             </div>
-        </section>
-
-        <!-- SEÇÃO 2: MODELAGEM FUNCIONAL GERAL -->
-        <section id="modelagem-funcional">
-            <h2>2. Modelagem Funcional Geral</h2>
-            
-            <h3>Requisitos Técnicos (Especificações)</h3>
-            <ul>
-                <li><strong>RF01 - Taxa de Captura:</strong> O sistema deve operar com aquisição estável mínima de 15 frames por segundo (FPS) sob resolução espacial padrão de 640x480 pixels.</li>
-                <li><strong>RF02 - Extração de Pose:</strong> O software deve extrair de forma contínua a bounding box do indivíduo e as coordenadas espaciais simplificadas do centro de massa.</li>
-                <li><strong>RF03 - Análise Temporal:</strong> O sistema deve rastrear a variação temporal da altura da bounding box para distinguir uma descida rápida intencional (sentar) de um vetor de queda.</li>
-                <li><strong>RF04 - Subsistema de Alarme:</strong> O sistema deve disparar uma flag lógica e registrar o evento caso a proporção geométrica da silhueta permaneça estável no plano horizontal por mais de 15 segundos.</li>
-                <li><strong>RNF01 - Processamento Local (Edge Computing):</strong> A inferência e a análise de imagem devem ser executadas estritamente em hardware local, eliminando dependência de nuvem para a segurança dos dados.</li>
-                <li><strong>RNF02 - Robustez Luminosa:</strong> O algoritmo de segmentação deve operar sob variações controladas de iluminação (iluminação artificial interna e sombras dinâmicas).</li>
-            </ul>
-
-            <h3>Funções e Funcionalidades do Sistema</h3>
-            <p>O encadeamento lógico do sistema é composto por quatro módulos funcionais principais:</p>
-            <ol>
-                <li><strong>Módulo de Aquisição e Filtragem:</strong> Coleta o frame bruto, realiza a conversão para escala de cinza e aplica um filtro gaussiano para atenuação de ruídos de alta frequência do sensor óptico.</li>
-                <li><strong>Módulo de Segmentação e Extração:</strong> Isola o objeto de interesse (humano) do fundo estático por subtração de fundo ou modelos de deep learning leves de detecção de pose, delimitando a região com uma Bounding Box retangular.</li>
-                <li><strong>Módulo de Análise Geométrica e Cinemática:</strong> Calcula a razão de aspecto da caixa (Largura/Altura), o deslocamento do centroide e a velocidade vetorial de queda no eixo vertical.</li>
-                <li><strong>Módulo de Validação e Comunicação:</strong> Avalia o limiar de imobilidade pós-impacto e commuta uma porta lógica de saída (Alerta).</li>
-            </ol>
-
-            <h3>Diagrama de Blocos de Implementação</h3>
-            <div class="diagram-box">
-┌─────────────────┐      ┌────────────────────────┐      ┌──────────────────────────┐
-│ Câmera Monocular│ ──►  │ Pré-Processamento      │ ──►  │ Segmentação e Pose       │
-│  (Sensor Edge)  │      │ (Filtro Gaussiano/Cinza)│      │ (Bounding Box / Centroide)│
-└─────────────────┘      └────────────────────────┘      └─────────────┬────────────┘
-                                                                       │
-                                                                       ▼
-┌─────────────────┐      ┌────────────────────────┐      ┌──────────────────────────┐
-│   Interface /   │ ◄──  │  Lógica de Decisão     │ ◄──  │  Mapeamento de Variáveis │
-│ Flag de Alerta  │      │ (Limiar de Velocidade &│      │ (Cálculo de Razão de     │
-│                 │      │  Tempo de Inércia)     │      │  Aspecto e Vel. Vertical)│
-└─────────────────┘      └────────────────────────┘      └──────────────────────────┘
-            </div>
-        </section>
-
-        <!-- SEÇÃO 3: MÉTODOS DE CALIBRAÇÃO E AVALIAÇÃO -->
-        <section id="metodos-projeto">
-            <h2>3. Métodos de Calibração e Avaliação</h2>
-            
-            <h3>Método de Calibração</h3>
-            <p>Para mitigar erros de projeção geométrica decorrentes da distorção radial e tangencial das lentes da câmera (particularmente lentes grande-angulares ideais para monitoramento de teto), será empregado o <strong>Método de Calibração de Zhang</strong> utilizando um padrão planar quadriculado (tabuleiro de xadrez). Através de múltiplas capturas do padrão em orientações distintas, o sistema computará:</p>
-            <ul>
-                <li>A matriz de parâmetros intrínsecos ($A$), mapeando a distância focal ($f_x, f_y$) e o ponto principal ($c_x, c_y$).</li>
-                <li>Os coeficientes de distorção radial ($k_1, k_2$) e tangencial ($p_1, p_2$) para a correção e retificação prévia da imagem de entrada.</li>
-                <li>A matriz de homografia para alinhar o plano da imagem ao plano de solo real, convertendo variações de pixels em distâncias métricas reais de deslocamento.</li>
-            </ul>
-
-            <h3>Método de Avaliação Funcional</h3>
-            <p>A validação operacional do protótipo de software dar-se-á através de testes laboratoriais controlados com ambiente preparado de segurança (colchões para amortecimento). Voluntários realizarão um protocolo composto por duas classes de ações:</p>
-            <ol>
-                <li><strong>Atividades de Vida Diária (AVDs):</strong> Sentar-se rapidamente, agachar-se para coletar objetos, caminhar e deitar-se de forma controlada em estofados.</li>
-                <li><strong>Eventos Críticos (Quedas):</strong> Quedas simuladas em direções distintas (frontal, lateral e posterior).</li>
-            </ol>
-            <p>O desempenho quantitativo do classificador será tabulado em uma <strong>Matriz de Confusão</strong> para a extração das seguintes métricas científicas:</p>
-            <ul>
-                <li><strong>Sensibilidade (Recall):</strong> $\frac{VP}{VP + FN}$ — Mede a capacidade do sistema de identificar todas as quedas reais ocorridas. O objetivo técnico é aproximar essa métrica de 100%, eliminando Falsos Negativos (FN).</li>
-                <li><strong>Precisão:</strong> $\frac{VP}{VP + FP}$ — Avalia a confiabilidade do alerta, medindo o impacto dos Falsos Positivos (FP) gerados por falsos alarmes em rotinas comuns.</li>
-            </ul>
-        </section>
+        </details>
 
     </main>
 
