@@ -27,6 +27,11 @@
             line-height: 1.6;
             color: var(--text);
             background-color: var(--bg);
+            
+            /* Correção do footer flutuante */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* Cabeçalho */
@@ -86,6 +91,9 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 1.5rem;
+            width: 100%; /* Garante o alinhamento correto com o flex */
+            /* Empurra o footer para o final da tela se o conteúdo for menor que a altura do monitor */
+            flex: 1; 
         }
 
         /* Seções Clicáveis e Expansíveis Principais */
@@ -378,8 +386,7 @@
             padding: 2.5rem;
             background-color: var(--primary);
             color: var(--white);
-            margin-top: 5rem;
-            font-size: 0.9rem;
+            margin-top: 2rem; /* Reduzido de 5rem para ficar mais harmônico */
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
