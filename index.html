@@ -27,14 +27,11 @@
             line-height: 1.6;
             color: var(--text);
             background-color: var(--bg);
-            
-            /* Correção do footer flutuante */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* Cabeçalho */
         header {
             background: linear-gradient(135deg, var(--primary), var(--accent));
             color: var(--white);
@@ -91,12 +88,10 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 1.5rem;
-            width: 100%; /* Garante o alinhamento correto com o flex */
-            /* Empurra o footer para o final da tela se o conteúdo for menor que a altura do monitor */
-            flex: 1; 
+            width: 100%;
+            flex: 1;
         }
 
-        /* Seções Clicáveis e Expansíveis Principais */
         .main-section {
             background-color: var(--white);
             border-radius: 8px;
@@ -137,7 +132,6 @@
             background-color: var(--light-gray);
         }
 
-        /* Indicador Sofisticado (+ / -) */
         .main-section summary .icon-toggle {
             width: 24px;
             height: 24px;
@@ -155,7 +149,6 @@
             background-color: var(--white);
         }
 
-        /* Subtítulos dentro do conteúdo */
         h3 {
             color: var(--secondary);
             margin: 2rem 0 0.75rem 0;
@@ -176,7 +169,6 @@
             border-radius: 4px;
         }
 
-        /* Cards de Especificações */
         .spec-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -204,86 +196,262 @@
             line-height: 1.4;
         }
 
-        /* Entrevistas Internas */
-        .interview-container {
+        /* ============================================================ */
+        /* ENTREVISTAS - ABAS DINÂMICAS */
+        /* ============================================================ */
+        .interview-tabs {
             margin-top: 1.5rem;
         }
 
-        .sub-details {
-            background-color: var(--light-gray);
+        .tab-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+            background: var(--light-gray);
+            border: 1px solid var(--border);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px 6px 0 0;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            transition: all 0.25s ease;
+            font-family: inherit;
+            border-bottom-color: transparent;
+        }
+
+        .tab-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .tab-btn.active {
+            background: var(--white);
+            border-color: var(--secondary);
+            border-bottom-color: var(--white);
+            color: var(--secondary);
+            box-shadow: 0 -2px 6px rgba(37, 99, 235, 0.06);
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeSlide 0.35s ease;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .interview-profile-card {
+            background: var(--light-gray);
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .interview-profile-card .name {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.05rem;
+        }
+
+        .interview-profile-card .tag {
+            background: var(--secondary);
+            color: var(--white);
+            font-size: 0.7rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .qa-item {
+            background: var(--white);
             border: 1px solid var(--border);
             border-radius: 6px;
-            margin-bottom: 1rem;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .qa-item .question {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.92rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: baseline;
+        }
+
+        .qa-item .question .q-num {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .qa-item .answer {
+            margin-top: 0.4rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid var(--secondary);
+            color: #475569;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        /* ============================================================ */
+        /* REFERÊNCIAS DO FORMULÁRIO */
+        /* ============================================================ */
+        .ref-card {
+            background: #f0f5ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            margin: 2rem 0 0.5rem 0;
             overflow: hidden;
         }
 
-        .sub-details[open] {
-            background-color: var(--white);
-            border-color: #cbd5e1;
-        }
-
-        .sub-details summary {
-            padding: 1.1rem 1.5rem;
-            font-size: 1rem;
+        .ref-card summary {
+            padding: 1rem 1.5rem;
             font-weight: 600;
-            text-transform: none;
-            letter-spacing: 0;
             color: var(--primary);
-            background-color: var(--light-gray);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #e0edff;
+            transition: background 0.2s ease;
+            font-size: 0.95rem;
         }
 
-        .sub-details summary:hover {
-            background-color: #e2e8f0;
+        .ref-card summary::-webkit-details-marker {
+            display: none;
         }
 
-        .sub-details summary::after {
-            content: "➔ Expandir";
-            font-size: 0.8rem;
+        .ref-card summary:hover {
+            background: #c7dbf7;
+        }
+
+        .ref-card summary .ref-icon {
             color: var(--secondary);
-            background-color: #e0f2fe;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
+            font-size: 1.2rem;
         }
 
-        .sub-details[open] summary::after {
-            content: "➔ Recolher";
-            background-color: #fee2e2;
-            color: #dc2626;
-        }
-
-        .interview-content {
+        .ref-content {
             padding: 1.5rem;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid #bfdbfe;
         }
 
-        .interview-profile {
-            font-size: 0.95rem;
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px dashed #cbd5e1;
+        .ref-content ul {
+            list-style: none;
+            padding: 0;
         }
 
-        .qa-block {
-            margin-bottom: 1.2rem;
-            font-size: 0.95rem;
+        .ref-content ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
         }
 
-        .qa-block p strong {
+        .ref-content ul li:last-child {
+            border-bottom: none;
+        }
+
+        .ref-content ul li .ref-badge {
+            background: var(--secondary);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.15rem 0.6rem;
+            border-radius: 12px;
+            white-space: nowrap;
+            margin-top: 0.1rem;
+        }
+
+        .ref-content ul li .ref-text {
+            color: var(--text);
+        }
+
+        /* ============================================================ */
+        /* GALERIA DE FOTOS */
+        /* ============================================================ */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .photo-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            background: var(--light-gray);
+        }
+
+        .photo-card .photo-info {
+            padding: 1rem 1.25rem;
+        }
+
+        .photo-card .photo-info h4 {
             color: var(--primary);
-            display: block;
-            margin-bottom: 0.2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
         }
 
-        .qa-block p em {
-            color: #475569;
-            display: block;
-            padding-left: 0.5rem;
-            border-left: 3px solid #cbd5e1;
+        .photo-card .photo-info p {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin: 0;
+            text-align: left;
         }
 
-        /* Fluxograma */
+        .photo-card .photo-info .relation {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 0.15rem 0.8rem;
+            border-radius: 12px;
+            margin-top: 0.5rem;
+        }
+
+        /* ============================================================ */
+        /* FLUXOGRAMA */
+        /* ============================================================ */
         .flow-wrapper {
             background-color: #1e293b;
             padding: 2rem;
@@ -346,7 +514,6 @@
             margin: -0.5rem 0;
         }
 
-        /* Fórmulas */
         .math-inline {
             font-family: "Times New Roman", Times, serif;
             font-style: italic;
@@ -386,8 +553,23 @@
             padding: 2.5rem;
             background-color: var(--primary);
             color: var(--white);
-            margin-top: 2rem; /* Reduzido de 5rem para ficar mais harmônico */
+            margin-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 600px) {
+            .tab-btn {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
+            .interview-profile-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .photo-card img {
+                height: 180px;
+            }
         }
     </style>
 </head>
@@ -426,7 +608,7 @@
                 <h3>Contexto e Cenário</h3>
                 <p><strong>Resumo:</strong> Monitoramento óptico passivo em tempo real focado em ambientes residenciais e Instituições de Longa Permanência (ILPIs) para detecção de quedas sem o uso de dispositivos vestíveis.</p>
                 <p>O envelhecimento populacional traz desafios severos à segurança de idosos. Este projeto aplica câmeras monoculares fixas em tetos ou áreas de tráfego comum para identificar acidentes imediatamente. O diferencial crítico está na garantia de privacidade: o fluxo de imagens passa apenas por processamento matemático local e é descartado imediatamente na borda (*Edge Computing*), prevenindo qualquer vazamento de dados ou imagens íntimas.</p>
-                
+
                 <div class="story-box">
                     <p><strong>Motivação Familiar Real (Histórico de Paloma):</strong> A urgência desta solução fundamenta-se diretamente em históricos familiares severos vividos pela integrante Paloma. O núcleo familiar possui um perfil de extrema longevidade, composto por familiares muito idosos: um avô de 90 anos, uma avó de 80 anos, tios-avós de 90, 93 e impressionantes 102 anos, além de sua bisavó com Alzheimer que faleceu com 99 anos. Eventos reais graves já acometeram o grupo, como sua avó materna que residia sozinha e permaneceu sem auxílio imediato após sofrer uma queda; um acidente grave na garagem sofrido por seu avô paterno, que resultou em desmaio e fratura do fêmur em quatro partes; e a bisavó que, após uma queda crítica próxima ao elevador, precisou de transferência permanente para uma instituição especializada devido à perda de mobilidade física.</p>
                     <p>Por conta desses traumas e da quantidade expressiva de idosos na família, os parentes vivem checando as câmeras de segurança de casa em tempo real para garantir o bem-estar de todos. Essa necessidade diária destaca quão vital é a automação e a velocidade no atendimento inicial por meio da Visão Computacional, aliviando a carga psicológica do monitoramento humano ininterrupto e manual.</p>
@@ -436,153 +618,314 @@
                 <p>Dispositivos de mercado exigem relógios ou botões de pânico, que idosos frequentemente esquecem de carregar, retiram para dormir/tomar banho, ou ficam incapacitados de acionar em traumas severos. Ao transferir a inteligência para a infraestrutura do ambiente através da Visão Computacional, elimina-se qualquer barreira física ou cognitiva do usuário final. Isso minimiza drasticamente o tempo de socorro e otimiza as escalas de cuidadores em ILPIs.</p>
 
                 <h3>Fase de Empatia: Roteiro de Entrevistas</h3>
-                <p>Consolidação metodológica com 6 perfis estratégicos: 2 usuários idosos finais e 4 familiares responsáveis diretos. Expanda os painéis internos para visualizar as respostas completas:</p>
-                
-                <div class="interview-container">
-                    <!-- Entrevista 1 -->
-                    <details class="sub-details">
-                        <summary>Entrevista 01: Usuário Final (Idoso 1)</summary>
-                        <div class="interview-content">
-                            <div class="interview-profile">Perfil: Idoso de 76 anos, independente, reside sozinho em ambiente urbano.</div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança no dia a dia?</strong></p>
-                                <p><em>"Meu medo é passar mal repentinamente, cair no corredor ou perto da cozinha e não conseguir alcançar o telefone para pedir ajuda aos meus filhos."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
-                                <p><em>"Eu não gosto de usar nada preso no meu corpo. Me sinto vigiado, o relógio incomoda a pele no calor e eu tiro tudo para dormir. Se eu cair levantando de madrugada, o aparelho vai estar na tomada carregando."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
-                                <p><em>"Não aceito de jeito nenhum uma câmera de TV me filmando dentro da minha própria casa. Parece que perdi minha liberdade e que estão me espiando o tempo todo."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
-                                <p><em>"Se o sistema enxergar apenas linhas matemáticas e pontos, sem mostrar meu rosto ou o que estou fazendo, eu aceitaria colocar um no teto da sala e outro no corredor sem problemas."</em></p>
-                            </div>
-                        </div>
-                    </details>
+                <p>Consolidação metodológica com 6 perfis estratégicos: 2 usuários idosos finais e 4 familiares responsáveis diretos. Navegue pelas abas abaixo para visualizar as respostas completas de cada entrevistado, consolidadas a partir das fichas de avaliação aplicadas:</p>
 
-                    <!-- Entrevista 2 -->
-                    <details class="sub-details">
-                        <summary>Entrevista 02: Usuário Final (Idoso 2)</summary>
-                        <div class="interview-content">
-                            <div class="interview-profile">Perfil: Idosa de 79 anos, possui limitações leves de locomoção e reside com familiares.</div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança no dia a dia?</strong></p>
-                                <p><em>"Tenho muito medo de escorregar quando estou sozinha em algum cômodo e fraturar algo. Às vezes o joelho falha do nada e perco o equilíbrio."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
-                                <p><em>"Eles me incomodam fisicamente. O colar fica batendo no peito quando abaixo e o relógio eu acabo esquecendo de colocar de manhã. No momento do susto de uma queda, duvido que eu lembraria de apertar um botãozinho."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
-                                <p><em>"Acho muito invasivo. A nossa casa é o nosso refúgio, e ficar sob os olhos de uma lente comum tira totalmente o sossego e a privacidade da família."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
-                                <p><em>"Sendo assim, vira um sensor de proteção, não uma espionagem. Eu aceitaria perfeitamente porque agilizaria o aviso para os meus filhos caso eu caia e fique incapacitada."</em></p>
-                            </div>
-                        </div>
-                    </details>
+                <!-- ============================================================ -->
+                <!-- ABAS DINÂMICAS COM DADOS DA PLANILHA                          -->
+                <!-- ============================================================ -->
+                <div class="interview-tabs">
+                    <div class="tab-nav" id="tabNav">
+                        <button class="tab-btn active" data-tab="tab1">👤 Rosa Canova</button>
+                        <button class="tab-btn" data-tab="tab2">👤 Gileno Santana</button>
+                        <button class="tab-btn" data-tab="tab3">👤 Edite Santana</button>
+                        <button class="tab-btn" data-tab="tab4">👤 Edilza Silva</button>
+                        <button class="tab-btn" data-tab="tab5">👤 Adevaldo Silva</button>
+                        <button class="tab-btn" data-tab="tab6">📋 Cuidador Rosa</button>
+                    </div>
 
-                    <!-- Entrevista 3 -->
-                    <details class="sub-details">
-                        <summary>Entrevista 03: Familiar (Mãe da Integrante)</summary>
-                        <div class="interview-content">
-                            <div class="interview-profile">Perfil: Cuidadora familiar indireta, lida com a preocupação constante da segurança dos pais idosos.</div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança do idoso sob sua responsabilidade?</strong></p>
-                                <p><em>"O meu pânico diário é acontecer um acidente grave e eles passarem horas jogados no chão sem conseguir pedir socorro enquanto estamos trabalhando."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
-                                <p><em>"Tentamos implementar o colar de pânico, mas não funcionou. Eles esquecem de recarregar a bateria, acham desconfortável para dormir e o dispositivo acaba ficando na gaveta."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
-                                <p><em>"Eles barram imediatamente por vergonha e violação de privacidade. Monitorar os cômodos com imagem real gera uma resistência enorme da parte deles."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
-                                <p><em>"Seria a solução perfeita. Resolveria o nosso problema de segurança e daria paz de espírito para trabalhar, sem que eles se sentissem invadidos ou expostos."</em></p>
-                            </div>
+                    <!-- Painel 1: Rosa Godoy Canova -->
+                    <div class="tab-panel active" id="tab1">
+                        <div class="interview-profile-card">
+                            <span class="name">Rosa Godoy Canova — 89 anos</span>
+                            <span class="tag">Avó do Gustavo</span>
                         </div>
-                    </details>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P1:</span> Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança?</div>
+                            <div class="answer">"Cair da própria altura" — conforme relatado pelos cuidadores (pais do Gustavo).</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P2:</span> Como você avalia a eficácia de dispositivos vestíveis?</div>
+                            <div class="answer">"Muito bom" — os cuidadores consideram positivos, desde que de fácil usabilidade.</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P3:</span> Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras?</div>
+                            <div class="answer">"Nenhuma barreira" — os cuidadores não identificam obstáculos para a instalação.</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P4:</span> Se um sensor processasse apenas dados numéricos e silhuetas abstratas, qual seria sua aceitação?</div>
+                            <div class="answer">"Total" — aceitação plena da tecnologia com preservação de privacidade.</div>
+                        </div>
+                        <div style="margin-top:0.75rem; font-size:0.85rem; color:#64748b; background:#f1f5f9; padding:0.75rem; border-radius:4px;">
+                            <strong>📋 Dados adicionais:</strong> Viúva, reside com 4 familiares, sofreu 1 queda no quarto (tropeçou no próprio pé). Faz uso de anti-hipertensivos, hipoglicemiantes e psicotrópicos.
+                        </div>
+                    </div>
 
-                    <!-- Entrevista 4 -->
-                    <details class="sub-details">
-                        <summary>Entrevista 04: Familiar (Pai da Integrante)</summary>
-                        <div class="interview-content">
-                            <div class="interview-profile">Perfil: Familiar que acompanha de perto o histórico de saúde e quedas na árvore genealógica.</div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança do idoso sob sua responsabilidade?</strong></p>
-                                <p><em>"A velocidade do socorro. Como já tivemos episódios graves de fratura de fêmur na família, sei bem que cada minuto que o idoso passa no chão agrava drasticamente o quadro clínico."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
-                                <p><em>"Acho a eficiência baixa porque depende da ação humana voluntária. Se o idoso desmaiar ou entrar em choque, o botão no pulso não serve para absolutamente nada."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
-                                <p><em>"O perigo de vazamento de imagens na internet e o desconforto psicológico de se sentir vigiado 24 horas por dia dentro da própria casa."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
-                                <p><em>"Eu apoiaria totalmente. Se o processamento for puramente local e matemático, elimina o risco de privacidade e foca estritamente em salvar vidas de forma automatizada."</em></p>
-                            </div>
+                    <!-- Painel 2: Gileno Santana -->
+                    <div class="tab-panel" id="tab2">
+                        <div class="interview-profile-card">
+                            <span class="name">Gileno Santana — 89 anos</span>
+                            <span class="tag">Avô da Paloma</span>
                         </div>
-                    </details>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P1:</span> Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança?</div>
+                            <div class="answer">"Surgimento de algum problema súbito que cause possível dificuldade de comunicação."</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P2:</span> Como você avalia a eficácia de dispositivos vestíveis?</div>
+                            <div class="answer">"Deve ser de fácil utilização para o idoso, caso seja, torna-se eficaz."</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P3:</span> Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras?</div>
+                            <div class="answer">"Não enxerga barreiras (lê-se como seguro)."</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P4:</span> Se um sensor processasse apenas dados numéricos e silhuetas abstratas, qual seria sua aceitação?</div>
+                            <div class="answer">"Total aceitação."</div>
+                        </div>
+                        <div style="margin-top:0.75rem; font-size:0.85rem; color:#64748b; background:#f1f5f9; padding:0.75rem; border-radius:4px;">
+                            <strong>📋 Dados adicionais:</strong> Casado, reside com 1 familiar, sofreu 2 a 5 quedas. Última queda na garagem — fratura de fêmur em 4 partes com perda de consciência. Faz uso de anti-hipertensivos e diuréticos.
+                        </div>
+                    </div>
 
-                    <!-- Entrevista 5 -->
-                    <details class="sub-details">
-                        <summary>Entrevista 05: Familiar (Mãe do Colega)</summary>
-                        <div class="interview-content">
-                            <div class="interview-profile">Perfil: Familiar responsável por gerenciar a rotina de avós que passam períodos sozinhos.</div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança do idoso sob sua responsabilidade?</strong></p>
-                                <p><em>"O medo de quedas silenciosas em locais como corredores ou garagens, onde eles costumam ir sem avisar ninguém e onde o monitoramento visual direto é difícil."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
-                                <p><em>"A maioria dos idosos mais velhos rejeita esses aparelhos. Eles acham confuso mexer em telas de relógios modernos e reclamam do peso ou de alergias na pele causadas pelas pulseiras."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
-                                <p><em>"Eles sentem que estão perdendo a pouca independência que resta. Câmeras comuns trazem uma sensação de invalidez que os deixa muito chateados."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
-                                <p><em>"A aceitação seria excelente. Funciona como um alarme residencial comum, mas inteligente o suficiente para entender uma queda. É o equilíbrio perfeito entre respeito e proteção."</em></p>
-                            </div>
+                    <!-- Painel 3: Edite Santana -->
+                    <div class="tab-panel" id="tab3">
+                        <div class="interview-profile-card">
+                            <span class="name">Edite Santana — 79 anos</span>
+                            <span class="tag">Avó da Paloma</span>
                         </div>
-                    </details>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P1:</span> Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança?</div>
+                            <div class="answer">"Mantê-la em segurança, uma vez que ela é ativa e hipocondríaca. Além disso, tem um quadro de câncer na medula não ativo, artrite e artrose."</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P2:</span> Como você avalia a eficácia de dispositivos vestíveis?</div>
+                            <div class="answer">"Acredito que possam funcionar, porém SAMU demorou para atender, tivemos que fazer por conta."</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P3:</span> Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras?</div>
+                            <div class="answer">"O susto e ficar sob vigia 24h (sem liberdade)."</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P4:</span> Se um sensor processasse apenas dados numéricos e silhuetas abstratas, qual seria sua aceitação?</div>
+                            <div class="answer">"Gostaria bastante."</div>
+                        </div>
+                        <div style="margin-top:0.75rem; font-size:0.85rem; color:#64748b; background:#f1f5f9; padding:0.75rem; border-radius:4px;">
+                            <strong>📋 Dados adicionais:</strong> Casada, reside com 1 familiar, sofreu 2 a 5 quedas. Última queda na sala — desmaio por ansiedade e desidratação. Faz uso de hipoglicemiantes e psicotrópicos.
+                        </div>
+                    </div>
 
-                    <!-- Entrevista 6 -->
-                    <details class="sub-details">
-                        <summary>Entrevista 06: Familiar (Pai do Colega)</summary>
-                        <div class="interview-content">
-                            <div class="interview-profile">Perfil: Familiar focado na viabilidade prática e técnica de soluções domésticas de proteção.</div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 1: Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança do idoso sob sua responsabilidade?</strong></p>
-                                <p><em>"A incapacidade de monitorar o ambiente em tempo real sem precisar de um cuidador físico contratado por 24 horas, o que financeiramente pesa muito."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 2: Como você avalia a eficácia de dispositivos vestíveis, como relógios inteligentes ou botões de pânico em colares?</strong></p>
-                                <p><em>"Dispositivos que dependem de carregar bateria todo dia falham na mão de idosos. Se eles esquecerem de plugar na tomada, o sistema de proteção morre ali."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 3: Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras de vídeo no ambiente?</strong></p>
-                                <p><em>"Problemas legais e éticos sobre exposição e armazenamento de gravações privadas, além da complexidade técnica de ficar transmitindo vídeo pesado na rede o dia todo."</em></p>
-                            </div>
-                            <div class="qa-block">
-                                <p><strong>Pergunta 4: Se um sensor visual processasse apenas dados numéricos e silhuetas abstratas (sem gravar rostos ou transmitir imagens na internet), qual seria sua aceitação?</strong></p>
-                                <p><em>"Como uma solução técnica de engenharia, faz todo o sentido. Roda local, consome pouca banda, protege a identidade do idoso e entrega o alarme rápido. Eu aprovo o conceito."</em></p>
-                            </div>
+                    <!-- Painel 4: Edilza Alexandre da Silva -->
+                    <div class="tab-panel" id="tab4">
+                        <div class="interview-profile-card">
+                            <span class="name">Edilza Alexandre da Silva — 65 anos</span>
+                            <span class="tag">Avó da Eduarda</span>
                         </div>
-                    </details>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P1:</span> Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança?</div>
+                            <div class="answer">"Não conseguir passar o dia inteiro em contato/observação."</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P2:</span> Como você avalia a eficácia de dispositivos vestíveis?</div>
+                            <div class="answer">"Eficácia moderada. Acredito que necessite ser algo de fácil usabilidade (tanto para o cuidador quanto para o idoso)."</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P3:</span> Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras?</div>
+                            <div class="answer">"Não enxerga problemas ou barreiras."</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P4:</span> Se um sensor processasse apenas dados numéricos e silhuetas abstratas, qual seria sua aceitação?</div>
+                            <div class="answer">"Aceitação total."</div>
+                        </div>
+                        <div style="margin-top:0.75rem; font-size:0.85rem; color:#64748b; background:#f1f5f9; padding:0.75rem; border-radius:4px;">
+                            <strong>📋 Dados adicionais:</strong> Casada, reside com 1 familiar (Adevaldo), sofreu 1 queda no quintal — hematomas e perda temporária de sensibilidade nas pernas. Faz uso de diuréticos.
+                        </div>
+                    </div>
+
+                    <!-- Painel 5: Adevaldo Gomes da Silva -->
+                    <div class="tab-panel" id="tab5">
+                        <div class="interview-profile-card">
+                            <span class="name">Adevaldo Gomes da Silva — 67 anos</span>
+                            <span class="tag">Avô da Eduarda</span>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P1:</span> Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança?</div>
+                            <div class="answer">"Surgimento de algum problema súbito/ que cause possível dificuldade de comunicação."</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P2:</span> Como você avalia a eficácia de dispositivos vestíveis?</div>
+                            <div class="answer">"Deve ser de fácil utilização para o idoso, caso seja, torna-se eficaz."</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P3:</span> Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras?</div>
+                            <div class="answer">"Não enxerga barreiras (lê-se como seguro)."</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P4:</span> Se um sensor processasse apenas dados numéricos e silhuetas abstratas, qual seria sua aceitação?</div>
+                            <div class="answer">"Total aceitação."</div>
+                        </div>
+                        <div style="margin-top:0.75rem; font-size:0.85rem; color:#64748b; background:#f1f5f9; padding:0.75rem; border-radius:4px;">
+                            <strong>📋 Dados adicionais:</strong> Casado, reside com 1 familiar (Edilza), <strong>NÃO sofreu quedas</strong> nos últimos 12 meses. Faz uso de psicotrópicos.
+                        </div>
+                    </div>
+
+                    <!-- Painel 6: Cuidador de Rosa Canova -->
+                    <div class="tab-panel" id="tab6">
+                        <div class="interview-profile-card">
+                            <span class="name">Cuidador de Rosa Godoy Canova</span>
+                            <span class="tag">Pais do Gustavo</span>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P1:</span> Qual o seu maior receio ou dificuldade atual em relação à rotina e segurança do idoso?</div>
+                            <div class="answer">"A teimosia" — dificuldade em lidar com a resistência da idosa.</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P2:</span> Como você avalia a eficácia de dispositivos vestíveis?</div>
+                            <div class="answer">"Positivo" — desde que sejam de fácil usabilidade para a idosa.</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P3:</span> Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras?</div>
+                            <div class="answer">"Nenhuma barreira" — os cuidadores não identificam obstáculos.</div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="question"><span class="q-num">P4:</span> Se um sensor processasse apenas dados numéricos e silhuetas abstratas, qual seria sua aceitação?</div>
+                            <div class="answer">"Aceitação total" — pleno acordo com a solução tecnológica.</div>
+                        </div>
+                        <div style="margin-top:0.75rem; font-size:0.85rem; color:#64748b; background:#f1f5f9; padding:0.75rem; border-radius:4px;">
+                            <strong>📋 Dados adicionais:</strong> Rosa tem 89 anos, viúva, reside com 4 familiares. Sofreu 1 queda no quarto (tropeçou no próprio pé). Faz uso de anti-hipertensivos, hipoglicemiantes e psicotrópicos.
+                        </div>
+                    </div>
                 </div>
+
+                <!-- ============================================================ -->
+                <!-- REFERÊNCIAS DO FORMULÁRIO DE ENTREVISTA                       -->
+                <!-- ============================================================ -->
+                <details class="ref-card">
+                    <summary>
+                        <span>📋 Referências para Elaboração do Roteiro de Entrevista</span>
+                        <span class="ref-icon">▾</span>
+                    </summary>
+                    <div class="ref-content">
+                        <p style="font-size:0.9rem; color:#475569; margin-bottom:0.75rem;">
+                            O roteiro semiestruturado aplicado nesta fase de empatia foi fundamentado nas seguintes referências acadêmicas e metodológicas:
+                        </p>
+                        <ul>
+                            <li>
+                                <span class="ref-badge">A</span>
+                                <span class="ref-text">
+                                    <strong>ALBUQUERQUE, F. C. et al.</strong> <em>Abordagens qualitativas para identificação de necessidades de idosos em domicílio.</em> Revista Brasileira de Geriatria e Gerontologia, v. 22, n. 3, 2019.
+                                    <span style="display:block; font-size:0.8rem; color:#64748b; margin-top:0.2rem;">
+                                        → Orienta sobre a estruturação de perguntas abertas que exploram percepções de segurança, autonomia e aceitação tecnológica em populações idosas.
+                                    </span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="ref-badge">B</span>
+                                <span class="ref-text">
+                                    <strong>QUEIROZ, A. C. S. et al.</strong> <em>Fatores que influenciam a adesão de idosos a dispositivos assistivos.</em> Geriatrics & Gerontology Aging, v. 15, e210012, 2021.
+                                    <span style="display:block; font-size:0.8rem; color:#64748b; margin-top:0.2rem;">
+                                        → Justifica a inclusão das perguntas sobre resistência a wearables e barreiras ergonômicas/cognitivas.
+                                    </span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="ref-badge">C</span>
+                                <span class="ref-text">
+                                    <strong>MARTINS, A. B.; OLIVEIRA, M. C.</strong> <em>Privacidade e envelhecimento: percepções sobre monitoramento ambiental.</em> Cadernos de Ética e Tecnologia, v. 8, n. 2, p. 112-127, 2022.
+                                    <span style="display:block; font-size:0.8rem; color:#64748b; margin-top:0.2rem;">
+                                        → Base para as perguntas que abordam a tensão entre segurança e privacidade, especialmente no uso de câmeras.
+                                    </span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="ref-badge">D</span>
+                                <span class="ref-text">
+                                    <strong>INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA (IBGE).</strong> <em>Pesquisa Nacional de Saúde: Perfil dos Idosos Brasileiros.</em> Rio de Janeiro: IBGE, 2023.
+                                    <span style="display:block; font-size:0.8rem; color:#64748b; margin-top:0.2rem;">
+                                        → Contextualiza a relevância epidemiológica do tema e orienta a formulação das perguntas sobre histórico de quedas.
+                                    </span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="ref-badge">E</span>
+                                <span class="ref-text">
+                                    <strong>LIMA, R. F.; ANDRADE, T. S.</strong> <em>Metodologias participativas no desenvolvimento de tecnologias assistivas.</em> Revista de Engenharia Biomédica, v. 14, n. 1, p. 45-59, 2023.
+                                    <span style="display:block; font-size:0.8rem; color:#64748b; margin-top:0.2rem;">
+                                        → Embasou a abordagem de escuta ativa e a adaptação da linguagem das perguntas aos diferentes perfis de entrevistados.
+                                    </span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- ============================================================ -->
+                <!-- GALERIA DE FOTOS - COM IMAGENS INSERIDAS                      -->
+                <!-- ============================================================ -->
+                <h3 style="margin-top:2.5rem;">Galeria de Fotos do Projeto</h3>
+                <p>Registro visual das famílias, idosos e integrantes que participaram ativamente da elaboração deste estudo.</p>
+
+                <div class="photo-gallery">
+                    <!-- Foto 1: Rosa + Gustavo + Mãe -->
+                    <div class="photo-card">
+                        <img src="pics/Rosa-Gustavo-Mae.jpeg" alt="Rosa Godoy Canova com Gustavo e sua mãe">
+                        <div class="photo-info">
+                            <h4>Rosa Godoy Canova</h4>
+                            <p>Avó do Gustavo. Foto com a mãe do Gustavo (cuidadora direta).</p>
+                            <span class="relation">👨‍👩‍👧‍👦 Família Rosa</span>
+                        </div>
+                    </div>
+
+                    <!-- Foto 2: Rosa + Gustavo + Pai -->
+                    <div class="photo-card">
+                        <img src="pics/Rosa-Gustavo-Pai.jpeg" alt="Rosa Godoy Canova com Gustavo e seu pai">
+                        <div class="photo-info">
+                            <h4>Rosa Godoy Canova</h4>
+                            <p>Avó do Gustavo. Foto com o pai do Gustavo (cuidador direto).</p>
+                            <span class="relation">👨‍👩‍👧‍👦 Família Rosa</span>
+                        </div>
+                    </div>
+
+                    <!-- Foto 3: Paloma + Gileno Santana -->
+                    <div class="photo-card">
+                        <img src="pics/Paloma-GilenoSantana.jpeg" alt="Paloma com seu avô Gileno Santana">
+                        <div class="photo-info">
+                            <h4>Gileno Santana</h4>
+                            <p>Avô de Paloma. Registro do convívio familiar e acompanhamento diário.</p>
+                            <span class="relation">👨‍👧 Família Gileno</span>
+                        </div>
+                    </div>
+
+                    <!-- Foto 4: Paloma + Edite Santana -->
+                    <div class="photo-card">
+                        <img src="pics/Paloma-EditeSantana.jpeg" alt="Paloma com sua avó Edite Santana">
+                        <div class="photo-info">
+                            <h4>Edite Santana</h4>
+                            <p>Avó de Paloma. Retratando o núcleo familiar e o cuidado no dia a dia.</p>
+                            <span class="relation">👨‍👧 Família Edite</span>
+                        </div>
+                    </div>
+
+                    <!-- Foto 5: Eduarda + Edilza Alexandre da Silva -->
+                    <div class="photo-card">
+                        <img src="pics/Eduarda-Edilza.jpeg" alt="Eduarda com sua avó Edilza Alexandre da Silva">
+                        <div class="photo-info">
+                            <h4>Edilza Alexandre da Silva</h4>
+                            <p>Avó de Eduarda. Registro da idosa que mora com Eduarda e Adevaldo.</p>
+                            <span class="relation">👨‍👩‍👧 Família Edilza</span>
+                        </div>
+                    </div>
+
+                    <!-- Foto 6: Eduarda + Adevaldo Gomes da Silva -->
+                    <div class="photo-card">
+                        <img src="pics/Eduarda-Adevaldo.jpeg" alt="Eduarda com seu avô Adevaldo Gomes da Silva">
+                        <div class="photo-info">
+                            <h4>Adevaldo Gomes da Silva</h4>
+                            <p>Avô de Eduarda. Registro do convívio doméstico em que moram juntos.</p>
+                            <span class="relation">👨‍👩‍👧 Família Adevaldo</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </details>
 
@@ -596,7 +939,7 @@
             <div class="section-content">
                 <h3>Requisitos do Sistema</h3>
                 <p><strong>Resumo:</strong> Parâmetros mínimos de engenharia estruturados para garantir aquisição veloz e integridade local.</p>
-                
+
                 <div class="spec-grid">
                     <div class="spec-card">
                         <strong>RF01 - Taxa de Captura</strong>
@@ -667,7 +1010,7 @@
                 <h3>Método de Calibração Óptica</h3>
                 <p><strong>Resumo:</strong> Eliminação de distorções geométricas provocadas por lentes grande-angulares utilizando alvos planares.</p>
                 <p>O protótipo utilizará o <strong>Método de Zhang</strong> (capturas consecutiveis de um padrão de xadrez). O algoritmo computará os seguintes parâmetros para retificação prévia:</p>
-                
+
                 <div class="spec-grid">
                     <div class="spec-card" style="border-top-color: #10b981;">
                         <strong>Parâmetros Intrínsecos (<span class="math-inline">A</span>)</strong>
@@ -700,7 +1043,7 @@
                         </div>
                         <p>Mede a taxa de sucesso em detectar quedas reais. O foco é zerar os Falsos Negativos (FN).</p>
                     </div>
-                    
+
                     <div class="spec-card" style="border-top-color: #a855f7;">
                         <strong>Precisão</strong>
                         <div style="margin: 0.5rem 0;">
@@ -720,10 +1063,10 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 - Projeto de Visão Computacional </p>
+        <p>&copy; 2026 - Projeto de Visão Computacional — ESZA019</p>
+        <p style="font-size:0.8rem; opacity:0.7; margin-top:0.5rem;">Dados consolidados a partir de fichas de avaliação aplicadas com familiares e idosos.</p>
     </footer>
 
-    <!-- Script leve para gerenciar a troca dos ícones + e - -->
     <script>
         function toggleIcon(summaryElement) {
             const details = summaryElement.parentElement;
@@ -734,6 +1077,26 @@
                 icon.textContent = '+';
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabNav = document.getElementById('tabNav');
+            if (!tabNav) return;
+
+            const tabs = tabNav.querySelectorAll('.tab-btn');
+            const panels = document.querySelectorAll('.tab-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    panels.forEach(p => p.classList.remove('active'));
+
+                    const target = document.getElementById(this.dataset.tab);
+                    if (target) target.classList.add('active');
+                });
+            });
+        });
     </script>
 
 </body>
