@@ -390,55 +390,100 @@
         }
 
         /* ============================================================ */
-        /* GALERIA DE FOTOS */
+        /* CARROSSEL AUTOMÁTICO */
         /* ============================================================ */
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+        .gallery-wrapper {
             margin: 1.5rem 0;
         }
 
-        .photo-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
+        .gallery-expand-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .gallery-expand-btn:hover {
+            background: var(--accent);
+        }
+
+        .gallery-expand-btn .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-expand-btn.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .carousel-container {
+            max-height: 0;
             overflow: hidden;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--light-gray);
+            border-radius: 8px;
+            border: 1px solid var(--border);
         }
 
-        .photo-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+        .carousel-container.open {
+            max-height: 600px;
+            padding: 1.5rem;
         }
 
-        .photo-card img {
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background: var(--white);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%;
+            min-height: 320px;
+            background: var(--white);
+        }
+
+        .carousel-item .photo-img {
             width: 100%;
-            height: 220px;
+            height: 280px;
             object-fit: cover;
             display: block;
-            background: var(--light-gray);
+            background: #e2e8f0;
         }
 
-        .photo-card .photo-info {
-            padding: 1rem 1.25rem;
+        .carousel-item .photo-info {
+            padding: 0.75rem 1.5rem;
+            text-align: center;
         }
 
-        .photo-card .photo-info h4 {
+        .carousel-item .photo-info h4 {
             color: var(--primary);
             font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.2rem;
         }
 
-        .photo-card .photo-info p {
+        .carousel-item .photo-info p {
             font-size: 0.85rem;
             color: #64748b;
             margin: 0;
-            text-align: left;
+            text-align: center;
         }
 
-        .photo-card .photo-info .relation {
+        .carousel-item .photo-info .relation {
             display: inline-block;
             background: var(--secondary);
             color: white;
@@ -446,7 +491,86 @@
             font-weight: 600;
             padding: 0.15rem 0.8rem;
             border-radius: 12px;
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Botões de navegação */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 23, 42, 0.7);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.2s ease, transform 0.2s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(15, 23, 42, 0.9);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .carousel-btn.prev {
+            left: 12px;
+        }
+
+        .carousel-btn.next {
+            right: 12px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 0 0.25rem 0;
+        }
+
+        .carousel-dots .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+            padding: 0;
+        }
+
+        .carousel-dots .dot:hover {
+            background: #94a3b8;
+        }
+
+        .carousel-dots .dot.active {
+            background: var(--secondary);
+            transform: scale(1.3);
+        }
+
+        .carousel-counter {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 0.25rem;
+        }
+
+        /* Indicador de progresso automático */
+        .carousel-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: var(--secondary);
+            width: 0%;
+            transition: width 0.1s linear;
+            z-index: 5;
         }
 
         /* ============================================================ */
@@ -567,8 +691,19 @@
                 align-items: flex-start;
                 gap: 0.5rem;
             }
-            .photo-card img {
-                height: 180px;
+            .carousel-item .photo-img {
+                height: 200px;
+            }
+            .carousel-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            .carousel-btn.prev {
+                left: 6px;
+            }
+            .carousel-btn.next {
+                right: 6px;
             }
         }
     </style>
@@ -620,9 +755,7 @@
                 <h3>Fase de Empatia: Roteiro de Entrevistas</h3>
                 <p>Consolidação metodológica com 6 perfis estratégicos: 2 usuários idosos finais e 4 familiares responsáveis diretos. Navegue pelas abas abaixo para visualizar as respostas completas de cada entrevistado, consolidadas a partir das fichas de avaliação aplicadas:</p>
 
-                <!-- ============================================================ -->
-                <!-- ABAS DINÂMICAS COM DADOS DA PLANILHA                          -->
-                <!-- ============================================================ -->
+                <!-- ABAS DINÂMICAS COM DADOS DA PLANILHA -->
                 <div class="interview-tabs">
                     <div class="tab-nav" id="tabNav">
                         <button class="tab-btn active" data-tab="tab1">👤 Rosa Canova</button>
@@ -859,70 +992,93 @@
                 </details>
 
                 <!-- ============================================================ -->
-                <!-- GALERIA DE FOTOS - COM IMAGENS INSERIDAS                      -->
+                <!-- CARROSSEL AUTOMÁTICO                                          -->
                 <!-- ============================================================ -->
                 <h3 style="margin-top:2.5rem;">Galeria de Fotos do Projeto</h3>
-                <p>Registro visual das famílias, idosos e integrantes que participaram ativamente da elaboração deste estudo.</p>
+                <p style="margin-bottom:0.75rem;">Registro visual das famílias, idosos e integrantes que participaram ativamente da elaboração deste estudo.</p>
 
-                <div class="photo-gallery">
-                    <!-- Foto 1: Rosa + Gustavo + Mãe -->
-                    <div class="photo-card">
-                        <img src="pics/Rosa-Gustavo-Mae.jpeg" alt="Rosa Godoy Canova com Gustavo e sua mãe">
-                        <div class="photo-info">
-                            <h4>Rosa Godoy Canova</h4>
-                            <p>Avó do Gustavo. Foto com a mãe do Gustavo (cuidadora direta).</p>
-                            <span class="relation">👨‍👩‍👧‍👦 Família Rosa</span>
-                        </div>
-                    </div>
+                <div class="gallery-wrapper">
+                    <button class="gallery-expand-btn" id="galleryToggle">
+                        <span>📸 Ver Galeria Completa</span>
+                        <span class="arrow">▼</span>
+                        <span style="font-size:0.7rem; opacity:0.8; font-weight:400;">(6 fotos)</span>
+                    </button>
 
-                    <!-- Foto 2: Rosa + Gustavo + Pai -->
-                    <div class="photo-card">
-                        <img src="pics/Rosa-Gustavo-Pai.jpeg" alt="Rosa Godoy Canova com Gustavo e seu pai">
-                        <div class="photo-info">
-                            <h4>Rosa Godoy Canova</h4>
-                            <p>Avó do Gustavo. Foto com o pai do Gustavo (cuidador direto).</p>
-                            <span class="relation">👨‍👩‍👧‍👦 Família Rosa</span>
-                        </div>
-                    </div>
+                    <div class="carousel-container" id="carouselContainer">
+                        <div class="carousel-wrapper" id="carouselWrapper">
+                            <div class="carousel-track" id="carouselTrack">
+                                <!-- Item 1 -->
+                                <div class="carousel-item">
+                                    <img class="photo-img" src="projeto/pics/Rosa-Gustavo-Mae.jpeg" alt="Rosa Godoy Canova com Gustavo e sua mãe" onerror="this.style.display='none'">
+                                    <div class="photo-info">
+                                        <h4>Rosa Godoy Canova</h4>
+                                        <p>Avó do Gustavo. Com a mãe do Gustavo (cuidadora).</p>
+                                        <span class="relation">👨‍👩‍👧‍👦 Família Rosa</span>
+                                    </div>
+                                </div>
 
-                    <!-- Foto 3: Paloma + Gileno Santana -->
-                    <div class="photo-card">
-                        <img src="pics/Paloma-GilenoSantana.jpeg" alt="Paloma com seu avô Gileno Santana">
-                        <div class="photo-info">
-                            <h4>Gileno Santana</h4>
-                            <p>Avô de Paloma. Registro do convívio familiar e acompanhamento diário.</p>
-                            <span class="relation">👨‍👧 Família Gileno</span>
-                        </div>
-                    </div>
+                                <!-- Item 2 -->
+                                <div class="carousel-item">
+                                    <img class="photo-img" src="projeto/pics/Rosa-Gustavo-Pai.jpeg" alt="Rosa Godoy Canova com Gustavo e seu pai" onerror="this.style.display='none'">
+                                    <div class="photo-info">
+                                        <h4>Rosa Godoy Canova</h4>
+                                        <p>Avó do Gustavo. Com o pai do Gustavo (cuidador).</p>
+                                        <span class="relation">👨‍👩‍👧‍👦 Família Rosa</span>
+                                    </div>
+                                </div>
 
-                    <!-- Foto 4: Paloma + Edite Santana -->
-                    <div class="photo-card">
-                        <img src="pics/Paloma-EditeSantana.jpeg" alt="Paloma com sua avó Edite Santana">
-                        <div class="photo-info">
-                            <h4>Edite Santana</h4>
-                            <p>Avó de Paloma. Retratando o núcleo familiar e o cuidado no dia a dia.</p>
-                            <span class="relation">👨‍👧 Família Edite</span>
-                        </div>
-                    </div>
+                                <!-- Item 3 -->
+                                <div class="carousel-item">
+                                    <img class="photo-img" src="projeto/pics/Paloma-GilenoSantana.jpeg" alt="Paloma com seu avô Gileno Santana" onerror="this.style.display='none'">
+                                    <div class="photo-info">
+                                        <h4>Gileno Santana</h4>
+                                        <p>Avô de Paloma. Convívio familiar e acompanhamento diário.</p>
+                                        <span class="relation">👨‍👧 Família Gileno</span>
+                                    </div>
+                                </div>
 
-                    <!-- Foto 5: Eduarda + Edilza Alexandre da Silva -->
-                    <div class="photo-card">
-                        <img src="pics/Eduarda-Edilza.jpeg" alt="Eduarda com sua avó Edilza Alexandre da Silva">
-                        <div class="photo-info">
-                            <h4>Edilza Alexandre da Silva</h4>
-                            <p>Avó de Eduarda. Registro da idosa que mora com Eduarda e Adevaldo.</p>
-                            <span class="relation">👨‍👩‍👧 Família Edilza</span>
-                        </div>
-                    </div>
+                                <!-- Item 4 -->
+                                <div class="carousel-item">
+                                    <img class="photo-img" src="projeto/pics/Paloma-EditeSantana.jpeg" alt="Paloma com sua avó Edite Santana" onerror="this.style.display='none'">
+                                    <div class="photo-info">
+                                        <h4>Edite Santana</h4>
+                                        <p>Avó de Paloma. Núcleo familiar e cuidado diário.</p>
+                                        <span class="relation">👨‍👧 Família Edite</span>
+                                    </div>
+                                </div>
 
-                    <!-- Foto 6: Eduarda + Adevaldo Gomes da Silva -->
-                    <div class="photo-card">
-                        <img src="pics/Eduarda-Adevaldo.jpeg" alt="Eduarda com seu avô Adevaldo Gomes da Silva">
-                        <div class="photo-info">
-                            <h4>Adevaldo Gomes da Silva</h4>
-                            <p>Avô de Eduarda. Registro do convívio doméstico em que moram juntos.</p>
-                            <span class="relation">👨‍👩‍👧 Família Adevaldo</span>
+                                <!-- Item 5 -->
+                                <div class="carousel-item">
+                                    <img class="photo-img" src="projeto/pics/Eduarda-Edilza.jpeg" alt="Eduarda com sua avó Edilza Alexandre da Silva" onerror="this.style.display='none'">
+                                    <div class="photo-info">
+                                        <h4>Edilza Alexandre da Silva</h4>
+                                        <p>Avó de Eduarda. Mora com Eduarda e Adevaldo.</p>
+                                        <span class="relation">👨‍👩‍👧 Família Edilza</span>
+                                    </div>
+                                </div>
+
+                                <!-- Item 6 -->
+                                <div class="carousel-item">
+                                    <img class="photo-img" src="projeto/pics/Eduarda-Adevaldo.jpeg" alt="Eduarda com seu avô Adevaldo Gomes da Silva" onerror="this.style.display='none'">
+                                    <div class="photo-info">
+                                        <h4>Adevaldo Gomes da Silva</h4>
+                                        <p>Avô de Eduarda. Convívio doméstico em que moram juntos.</p>
+                                        <span class="relation">👨‍👩‍👧 Família Adevaldo</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Botões de navegação -->
+                            <button class="carousel-btn prev" id="carouselPrev" aria-label="Anterior">‹</button>
+                            <button class="carousel-btn next" id="carouselNext" aria-label="Próximo">›</button>
+
+                            <!-- Barra de progresso -->
+                            <div class="carousel-progress" id="carouselProgress"></div>
                         </div>
+
+                        <!-- Dots de navegação -->
+                        <div class="carousel-dots" id="carouselDots"></div>
+                        <div class="carousel-counter" id="carouselCounter">1 / 6</div>
                     </div>
                 </div>
 
@@ -1079,23 +1235,226 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            // Abas das entrevistas
             const tabNav = document.getElementById('tabNav');
-            if (!tabNav) return;
+            if (tabNav) {
+                const tabs = tabNav.querySelectorAll('.tab-btn');
+                const panels = document.querySelectorAll('.tab-panel');
 
-            const tabs = tabNav.querySelectorAll('.tab-btn');
-            const panels = document.querySelectorAll('.tab-panel');
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        tabs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
 
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    tabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
+                        panels.forEach(p => p.classList.remove('active'));
 
-                    panels.forEach(p => p.classList.remove('active'));
-
-                    const target = document.getElementById(this.dataset.tab);
-                    if (target) target.classList.add('active');
+                        const target = document.getElementById(this.dataset.tab);
+                        if (target) target.classList.add('active');
+                    });
                 });
-            });
+            }
+
+            // ============================================================
+            // CARROSSEL AUTOMÁTICO
+            // ============================================================
+            const toggleBtn = document.getElementById('galleryToggle');
+            const container = document.getElementById('carouselContainer');
+            const track = document.getElementById('carouselTrack');
+            const wrapper = document.getElementById('carouselWrapper');
+            const prevBtn = document.getElementById('carouselPrev');
+            const nextBtn = document.getElementById('carouselNext');
+            const dotsContainer = document.getElementById('carouselDots');
+            const counter = document.getElementById('carouselCounter');
+            const progressBar = document.getElementById('carouselProgress');
+
+            if (track && wrapper) {
+                const items = track.querySelectorAll('.carousel-item');
+                const total = items.length;
+                let currentIndex = 0;
+                let autoPlayInterval = null;
+                const AUTO_PLAY_DELAY = 4000; // 4 segundos
+                let isAutoPlaying = true;
+                let progressInterval = null;
+                let progressStartTime = 0;
+
+                // Criar dots
+                if (dotsContainer) {
+                    for (let i = 0; i < total; i++) {
+                        const dot = document.createElement('button');
+                        dot.className = 'dot' + (i === 0 ? ' active' : '');
+                        dot.dataset.index = i;
+                        dot.addEventListener('click', function() {
+                            const index = parseInt(this.dataset.index);
+                            goToSlide(index);
+                            resetAutoPlay();
+                        });
+                        dotsContainer.appendChild(dot);
+                    }
+                }
+
+                // Função para ir para um slide específico
+                function goToSlide(index) {
+                    if (index < 0) index = total - 1;
+                    if (index >= total) index = 0;
+                    currentIndex = index;
+
+                    const offset = -currentIndex * 100;
+                    track.style.transform = `translateX(${offset}%)`;
+
+                    // Atualizar dots
+                    const dots = dotsContainer.querySelectorAll('.dot');
+                    dots.forEach((d, i) => {
+                        d.classList.toggle('active', i === currentIndex);
+                    });
+
+                    // Atualizar contador
+                    if (counter) {
+                        counter.textContent = `${currentIndex + 1} / ${total}`;
+                    }
+
+                    // Resetar progresso
+                    resetProgress();
+                }
+
+                // Função para avançar
+                function nextSlide() {
+                    goToSlide(currentIndex + 1);
+                }
+
+                // Função para voltar
+                function prevSlide() {
+                    goToSlide(currentIndex - 1);
+                }
+
+                // Resetar o progresso
+                function resetProgress() {
+                    if (progressBar) {
+                        progressBar.style.width = '0%';
+                    }
+                    progressStartTime = Date.now();
+                    if (progressInterval) {
+                        clearInterval(progressInterval);
+                    }
+                    if (isAutoPlaying) {
+                        startProgressAnimation();
+                    }
+                }
+
+                // Animação da barra de progresso
+                function startProgressAnimation() {
+                    if (progressInterval) {
+                        clearInterval(progressInterval);
+                    }
+                    progressStartTime = Date.now();
+                    progressInterval = setInterval(() => {
+                        if (!isAutoPlaying) return;
+                        const elapsed = Date.now() - progressStartTime;
+                        const progress = Math.min((elapsed / AUTO_PLAY_DELAY) * 100, 100);
+                        if (progressBar) {
+                            progressBar.style.width = `${progress}%`;
+                        }
+                        if (progress >= 100) {
+                            nextSlide();
+                        }
+                    }, 50);
+                }
+
+                // Pausar auto-play
+                function pauseAutoPlay() {
+                    isAutoPlaying = false;
+                    if (autoPlayInterval) {
+                        clearInterval(autoPlayInterval);
+                        autoPlayInterval = null;
+                    }
+                    if (progressInterval) {
+                        clearInterval(progressInterval);
+                        progressInterval = null;
+                    }
+                }
+
+                // Resetar auto-play
+                function resetAutoPlay() {
+                    if (!isAutoPlaying) {
+                        isAutoPlaying = true;
+                        startProgressAnimation();
+                    } else {
+                        resetProgress();
+                    }
+                }
+
+                // Iniciar auto-play
+                function startAutoPlay() {
+                    isAutoPlaying = true;
+                    resetProgress();
+                }
+
+                // Expandir/Recolher galeria
+                if (toggleBtn && container) {
+                    toggleBtn.addEventListener('click', function() {
+                        const isOpen = container.classList.toggle('open');
+                        this.classList.toggle('active');
+                        this.querySelector('span').textContent = isOpen ? '📸 Ocultar Galeria' : '📸 Ver Galeria Completa';
+                        
+                        if (isOpen) {
+                            // Iniciar auto-play quando abrir
+                            setTimeout(() => {
+                                startAutoPlay();
+                            }, 400);
+                        } else {
+                            // Pausar quando fechar
+                            pauseAutoPlay();
+                        }
+                    });
+                }
+
+                // Event listeners dos botões
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        prevSlide();
+                        resetAutoPlay();
+                    });
+                }
+
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        nextSlide();
+                        resetAutoPlay();
+                    });
+                }
+
+                // Pausar ao passar o mouse
+                if (wrapper) {
+                    wrapper.addEventListener('mouseenter', function() {
+                        pauseAutoPlay();
+                    });
+
+                    wrapper.addEventListener('mouseleave', function() {
+                        if (container.classList.contains('open')) {
+                            startAutoPlay();
+                        }
+                    });
+                }
+
+                // Pausar ao tocar (mobile)
+                if (wrapper) {
+                    wrapper.addEventListener('touchstart', function() {
+                        pauseAutoPlay();
+                    });
+
+                    wrapper.addEventListener('touchend', function() {
+                        if (container.classList.contains('open')) {
+                            setTimeout(() => {
+                                startAutoPlay();
+                            }, 2000);
+                        }
+                    });
+                }
+
+                // Inicializar
+                goToSlide(0);
+            }
         });
     </script>
 
