@@ -390,7 +390,7 @@
         }
 
         /* ============================================================ */
-        /* CARROSSEL AUTOMÁTICO */
+        /* CARROSSEL AUTOMÁTICO - VERSÃO FINAL */
         /* ============================================================ */
         .gallery-wrapper {
             margin: 1.5rem 0;
@@ -400,19 +400,21 @@
             background: var(--secondary);
             color: white;
             border: none;
-            padding: 0.6rem 1.5rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
+            padding: 0.7rem 1.8rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s ease;
+            transition: background 0.2s ease, transform 0.2s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
         }
 
         .gallery-expand-btn:hover {
             background: var(--accent);
+            transform: translateY(-1px);
         }
 
         .gallery-expand-btn .arrow {
@@ -426,58 +428,62 @@
         .carousel-container {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
             background: var(--light-gray);
-            border-radius: 8px;
+            border-radius: 12px;
             border: 1px solid var(--border);
         }
 
         .carousel-container.open {
-            max-height: 600px;
+            max-height: 800px;
             padding: 1.5rem;
         }
 
         .carousel-wrapper {
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 10px;
             background: var(--white);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         }
 
         .carousel-track {
             display: flex;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             will-change: transform;
         }
 
         .carousel-item {
             flex: 0 0 100%;
-            min-height: 320px;
+            min-height: 420px;
             background: var(--white);
         }
 
         .carousel-item .photo-img {
             width: 100%;
-            height: 280px;
-            object-fit: cover;
+            height: 400px;
+            object-fit: contain;
             display: block;
-            background: #e2e8f0;
+            background: #f8fafc;
+            padding: 0.75rem;
         }
 
         .carousel-item .photo-info {
-            padding: 0.75rem 1.5rem;
+            padding: 0.75rem 1.5rem 1.25rem 1.5rem;
             text-align: center;
+            background: var(--white);
+            border-top: 1px solid var(--border);
         }
 
         .carousel-item .photo-info h4 {
             color: var(--primary);
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             margin-bottom: 0.2rem;
         }
 
         .carousel-item .photo-info p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #64748b;
             margin: 0;
             text-align: center;
@@ -489,88 +495,100 @@
             color: white;
             font-size: 0.65rem;
             font-weight: 600;
-            padding: 0.15rem 0.8rem;
-            border-radius: 12px;
-            margin-top: 0.3rem;
+            padding: 0.2rem 0.9rem;
+            border-radius: 20px;
+            margin-top: 0.4rem;
+            letter-spacing: 0.3px;
         }
 
         /* Botões de navegação */
         .carousel-btn {
             position: absolute;
-            top: 50%;
+            top: 45%;
             transform: translateY(-50%);
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.75);
             color: white;
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.2rem;
-            transition: background 0.2s ease, transform 0.2s ease;
+            font-size: 1.5rem;
+            transition: all 0.25s ease;
             z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(4px);
         }
 
         .carousel-btn:hover {
-            background: rgba(15, 23, 42, 0.9);
-            transform: translateY(-50%) scale(1.05);
+            background: rgba(15, 23, 42, 0.95);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .carousel-btn:active {
+            transform: translateY(-50%) scale(0.95);
         }
 
         .carousel-btn.prev {
-            left: 12px;
+            left: 16px;
         }
 
         .carousel-btn.next {
-            right: 12px;
+            right: 16px;
         }
 
+        /* Dots de navegação */
         .carousel-dots {
             display: flex;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             padding: 0.75rem 0 0.25rem 0;
         }
 
         .carousel-dots .dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: #cbd5e1;
             border: none;
             cursor: pointer;
-            transition: background 0.2s ease, transform 0.2s ease;
+            transition: all 0.3s ease;
             padding: 0;
         }
 
         .carousel-dots .dot:hover {
             background: #94a3b8;
+            transform: scale(1.1);
         }
 
         .carousel-dots .dot.active {
             background: var(--secondary);
             transform: scale(1.3);
+            box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
         }
 
         .carousel-counter {
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: #94a3b8;
-            margin-top: 0.25rem;
+            margin-top: 0.3rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
-        /* Indicador de progresso automático */
+        /* Barra de progresso */
         .carousel-progress {
             position: absolute;
             bottom: 0;
             left: 0;
-            height: 3px;
-            background: var(--secondary);
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), #60a5fa);
             width: 0%;
             transition: width 0.1s linear;
             z-index: 5;
+            border-radius: 0 0 0 4px;
         }
 
         /* ============================================================ */
@@ -672,6 +690,9 @@
             padding-top: 1px;
         }
 
+        /* ============================================================ */
+        /* RODAPÉ CENTRALIZADO */
+        /* ============================================================ */
         footer {
             text-align: center;
             padding: 2.5rem;
@@ -681,6 +702,26 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        footer .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        footer .footer-content p {
+            margin-bottom: 0.25rem;
+            text-align: center;
+        }
+
+        footer .footer-content .sub {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        /* ============================================================ */
+        /* RESPONSIVIDADE */
+        /* ============================================================ */
         @media (max-width: 600px) {
             .tab-btn {
                 font-size: 0.75rem;
@@ -692,18 +733,60 @@
                 gap: 0.5rem;
             }
             .carousel-item .photo-img {
-                height: 200px;
+                height: 280px;
+                padding: 0.5rem;
+            }
+            .carousel-item {
+                min-height: 300px;
             }
             .carousel-btn {
-                width: 32px;
-                height: 32px;
-                font-size: 0.9rem;
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
             }
             .carousel-btn.prev {
-                left: 6px;
+                left: 8px;
             }
             .carousel-btn.next {
-                right: 6px;
+                right: 8px;
+            }
+            .carousel-container.open {
+                max-height: 600px;
+                padding: 1rem;
+            }
+            .carousel-item .photo-info h4 {
+                font-size: 0.9rem;
+            }
+            .carousel-item .photo-info p {
+                font-size: 0.8rem;
+            }
+            .section-content {
+                padding: 0 1rem 1.5rem 1rem;
+            }
+            .main-section summary {
+                padding: 1.25rem 1rem;
+                font-size: 1.1rem;
+            }
+            footer {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .carousel-item .photo-img {
+                height: 220px;
+            }
+            .carousel-item {
+                min-height: 250px;
+            }
+            .carousel-container.open {
+                max-height: 500px;
+                padding: 0.75rem;
+            }
+            .carousel-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -992,7 +1075,7 @@
                 </details>
 
                 <!-- ============================================================ -->
-                <!-- CARROSSEL AUTOMÁTICO                                          -->
+                <!-- CARROSSEL AUTOMÁTICO - VERSÃO FINAL                          -->
                 <!-- ============================================================ -->
                 <h3 style="margin-top:2.5rem;">Galeria de Fotos do Projeto</h3>
                 <p style="margin-bottom:0.75rem;">Registro visual das famílias, idosos e integrantes que participaram ativamente da elaboração deste estudo.</p>
@@ -1218,9 +1301,14 @@
 
     </main>
 
+    <!-- ============================================================ -->
+    <!-- RODAPÉ CENTRALIZADO                                           -->
+    <!-- ============================================================ -->
     <footer>
-        <p>&copy; 2026 - Projeto de Visão Computacional — ESZA019</p>
-        <p style="font-size:0.8rem; opacity:0.7; margin-top:0.5rem;">Dados consolidados a partir de fichas de avaliação aplicadas com familiares e idosos.</p>
+        <div class="footer-content">
+            <p>&copy; 2026 - Projeto de Visão Computacional — ESZA019</p>
+            <p class="sub">Dados consolidados a partir de fichas de avaliação aplicadas com familiares e idosos.</p>
+        </div>
     </footer>
 
     <script>
@@ -1255,7 +1343,7 @@
             }
 
             // ============================================================
-            // CARROSSEL AUTOMÁTICO
+            // CARROSSEL AUTOMÁTICO - VERSÃO FINAL
             // ============================================================
             const toggleBtn = document.getElementById('galleryToggle');
             const container = document.getElementById('carouselContainer');
@@ -1271,13 +1359,12 @@
                 const items = track.querySelectorAll('.carousel-item');
                 const total = items.length;
                 let currentIndex = 0;
-                let autoPlayInterval = null;
-                const AUTO_PLAY_DELAY = 4000; // 4 segundos
+                const AUTO_PLAY_DELAY = 6000;
                 let isAutoPlaying = true;
                 let progressInterval = null;
                 let progressStartTime = 0;
+                let isPaused = false;
 
-                // Criar dots
                 if (dotsContainer) {
                     for (let i = 0; i < total; i++) {
                         const dot = document.createElement('button');
@@ -1292,7 +1379,6 @@
                     }
                 }
 
-                // Função para ir para um slide específico
                 function goToSlide(index) {
                     if (index < 0) index = total - 1;
                     if (index >= total) index = 0;
@@ -1301,32 +1387,26 @@
                     const offset = -currentIndex * 100;
                     track.style.transform = `translateX(${offset}%)`;
 
-                    // Atualizar dots
                     const dots = dotsContainer.querySelectorAll('.dot');
                     dots.forEach((d, i) => {
                         d.classList.toggle('active', i === currentIndex);
                     });
 
-                    // Atualizar contador
                     if (counter) {
                         counter.textContent = `${currentIndex + 1} / ${total}`;
                     }
 
-                    // Resetar progresso
                     resetProgress();
                 }
 
-                // Função para avançar
                 function nextSlide() {
                     goToSlide(currentIndex + 1);
                 }
 
-                // Função para voltar
                 function prevSlide() {
                     goToSlide(currentIndex - 1);
                 }
 
-                // Resetar o progresso
                 function resetProgress() {
                     if (progressBar) {
                         progressBar.style.width = '0%';
@@ -1335,19 +1415,18 @@
                     if (progressInterval) {
                         clearInterval(progressInterval);
                     }
-                    if (isAutoPlaying) {
+                    if (isAutoPlaying && !isPaused) {
                         startProgressAnimation();
                     }
                 }
 
-                // Animação da barra de progresso
                 function startProgressAnimation() {
                     if (progressInterval) {
                         clearInterval(progressInterval);
                     }
                     progressStartTime = Date.now();
                     progressInterval = setInterval(() => {
-                        if (!isAutoPlaying) return;
+                        if (!isAutoPlaying || isPaused) return;
                         const elapsed = Date.now() - progressStartTime;
                         const progress = Math.min((elapsed / AUTO_PLAY_DELAY) * 100, 100);
                         if (progressBar) {
@@ -1359,36 +1438,27 @@
                     }, 50);
                 }
 
-                // Pausar auto-play
                 function pauseAutoPlay() {
-                    isAutoPlaying = false;
-                    if (autoPlayInterval) {
-                        clearInterval(autoPlayInterval);
-                        autoPlayInterval = null;
-                    }
+                    isPaused = true;
                     if (progressInterval) {
                         clearInterval(progressInterval);
                         progressInterval = null;
                     }
                 }
 
-                // Resetar auto-play
-                function resetAutoPlay() {
-                    if (!isAutoPlaying) {
-                        isAutoPlaying = true;
-                        startProgressAnimation();
-                    } else {
+                function resumeAutoPlay() {
+                    isPaused = false;
+                    if (isAutoPlaying) {
                         resetProgress();
                     }
                 }
 
-                // Iniciar auto-play
                 function startAutoPlay() {
                     isAutoPlaying = true;
+                    isPaused = false;
                     resetProgress();
                 }
 
-                // Expandir/Recolher galeria
                 if (toggleBtn && container) {
                     toggleBtn.addEventListener('click', function() {
                         const isOpen = container.classList.toggle('open');
@@ -1396,18 +1466,15 @@
                         this.querySelector('span').textContent = isOpen ? '📸 Ocultar Galeria' : '📸 Ver Galeria Completa';
                         
                         if (isOpen) {
-                            // Iniciar auto-play quando abrir
                             setTimeout(() => {
                                 startAutoPlay();
-                            }, 400);
+                            }, 500);
                         } else {
-                            // Pausar quando fechar
                             pauseAutoPlay();
                         }
                     });
                 }
 
-                // Event listeners dos botões
                 if (prevBtn) {
                     prevBtn.addEventListener('click', function(e) {
                         e.stopPropagation();
@@ -1424,7 +1491,6 @@
                     });
                 }
 
-                // Pausar ao passar o mouse
                 if (wrapper) {
                     wrapper.addEventListener('mouseenter', function() {
                         pauseAutoPlay();
@@ -1432,12 +1498,11 @@
 
                     wrapper.addEventListener('mouseleave', function() {
                         if (container.classList.contains('open')) {
-                            startAutoPlay();
+                            resumeAutoPlay();
                         }
                     });
                 }
 
-                // Pausar ao tocar (mobile)
                 if (wrapper) {
                     wrapper.addEventListener('touchstart', function() {
                         pauseAutoPlay();
@@ -1446,13 +1511,12 @@
                     wrapper.addEventListener('touchend', function() {
                         if (container.classList.contains('open')) {
                             setTimeout(() => {
-                                startAutoPlay();
-                            }, 2000);
+                                resumeAutoPlay();
+                            }, 3000);
                         }
                     });
                 }
 
-                // Inicializar
                 goToSlide(0);
             }
         });
