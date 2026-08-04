@@ -25,6 +25,9 @@ O repositório está estruturado para contemplar tanto a proposta e validação 
 *   📁 **[Laboratório 02](./lab2_arquivos/)** - Extração  de  Características Features
 *   📁 **[Laboratório 03](./lab3_arquivos/)** - Alinhamento, Homografia 2D e Mosaico
 *   📁 **[Laboratório 04](./lab4_arquivos/)** - Calibração de Câmeras
+*   📁 **[Laboratório 05](./lab5_arquivos/)** - Câmera estéreo
+*   📁 **[Laboratório 06](./lab6_arquivos/)** - Depth Map (Mapa de profundidade)
+*   📁 **[Laboratório 07](./lab7/)** - Introdução às redes CNN (Convolution Neural Network) feito no Google Colab
 
 ---
 
