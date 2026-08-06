@@ -20,7 +20,7 @@ O repositório está estruturado para contemplar a proposta, os scripts de execu
 ### 🛠️ Projeto Final & Arquivos da Raiz
 * 📁 **[`/projeto`](./projeto/)** — Diretório contendo os assets, componentes e arquivos complementares da página e do sistema do projeto final.
 * 📄 **[`trabalho_final.ipynb`](./trabalho_final.ipynb)** — Notebook principal com a implementação, pipeline de inferência e testes do detector de quedas.
-* 📄 **[`roteiro_teste_detector_uedas.pdf`](./roteiro_teste_detector_uedas.pdf)** — Documentação do protocolo experimental e cenários de testes validados.
+* 📄 **[`roteiro_teste_detector_quedas.pdf`](./roteiro_teste_detector_quedas.pdf)** — Documentação do protocolo experimental e cenários de testes validados.
 * 🌐 **[`index.html`](./index.html)** — Interface web interativa apresentando a proposta, estudo de empatia, arquitetura e métricas do projeto.
 
 ---
