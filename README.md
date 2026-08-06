@@ -28,7 +28,7 @@ O repositório está estruturado para contemplar tanto a proposta e validação 
 *   📁 **[Laboratório 05](./lab5_arquivos/)** - Câmera estéreo
 *   📁 **[Laboratório 06](./lab6_arquivos/)** - Depth Map (Mapa de profundidade)
 *   📁 **[Laboratório 07](./lab7/)** - Introdução às redes CNN (Convolution Neural Network) feito no Google Colab
-
+*   📁 **[Laboratório 08](./lab8_arquivos/)** - Rastreamento de Objetos
 ---
 
 ## 👥 Integrantes do Grupo
