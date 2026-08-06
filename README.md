@@ -9,30 +9,36 @@ Repositório destinado ao desenvolvimento das atividades práticas e do projeto 
 ### **Sistema Inteligente de Monitoramento e Aviso de Queda de Idosos Doméstico e em ILPIs**
 O projeto consiste em um sistema de visão computacional voltado para a segurança na terceira idade. Através do processamento de imagens de câmeras locais e algoritmos geométricos/cinemáticos baseados em *Edge Computing*, o sistema identifica quedas em tempo real, preservando totalmente a privacidade e a identidade dos usuários.
 
-*   🔗 **[CLIQUE AQUI PARA ACESSAR A PÁGINA INTERATIVA DO PROJETO](https://pahsantana.github.io/LAB-CV2026.2/)**
+* 🔗 **[CLIQUE AQUI PARA ACESSAR A PÁGINA INTERATIVA DO PROJETO](https://pahsantana.github.io/LAB-CV2026.2/)**
 
 ---
 
 ## 📂 Organização do Repositório
 
-O repositório está estruturado para contemplar tanto a proposta e validação do projeto principal quanto as resoluções dos laboratórios práticos executados ao longo do semestre:
+O repositório está estruturado para contemplar a proposta, os scripts de execução, o relatório de testes e as validações do projeto principal, além dos laboratórios práticos da disciplina:
 
-*   **`/` (Raiz):** Contém o arquivo principal (`index.html`) que renderiza a interface web da proposta do projeto, os dados da fase de empatia (entrevistas estruturadas) e as especificações técnicas de calibração e avaliação funcional.
-*   **Pastas de Laboratórios:** Diretórios dedicados a cada experimento prático da disciplina, contendo relatórios, códigos e análises descritivas.
+### 🛠️ Projeto Final & Arquivos da Raiz
+* 📁 **[`/projeto`](./projeto/)** — Diretório contendo os assets, componentes e arquivos complementares da página e do sistema do projeto final.
+* 📄 **[`trabalho_final.ipynb`](./trabalho_final.ipynb)** — Notebook principal com a implementação, pipeline de inferência e testes do detector de quedas.
+* 📄 **[`roteiro_teste_detector_uedas.pdf`](./roteiro_teste_detector_uedas.pdf)** — Documentação do protocolo experimental e cenários de testes validados.
+* 🌐 **[`index.html`](./index.html)** — Interface web interativa apresentando a proposta, estudo de empatia, arquitetura e métricas do projeto.
 
-### Índice de Atividades Práticas
-*   📁 **[Laboratório 01](./lab1_arquivos/)** - Captura de Imagem e Vídeo
-*   📁 **[Laboratório 02](./lab2_arquivos/)** - Extração  de  Características Features
-*   📁 **[Laboratório 03](./lab3_arquivos/)** - Alinhamento, Homografia 2D e Mosaico
-*   📁 **[Laboratório 04](./lab4_arquivos/)** - Calibração de Câmeras
-*   📁 **[Laboratório 05](./lab5_arquivos/)** - Câmera estéreo
-*   📁 **[Laboratório 06](./lab6_arquivos/)** - Depth Map (Mapa de profundidade)
-*   📁 **[Laboratório 07](./lab7/)** - Introdução às redes CNN (Convolution Neural Network) feito no Google Colab
-*   📁 **[Laboratório 08](./lab8_arquivos/)** - Rastreamento de Objetos
+---
+
+### 🧪 Índice de Atividades Práticas (Laboratórios)
+* 📁 **[Laboratório 01](./lab1_arquivos/)** — Captura de Imagem e Vídeo
+* 📁 **[Laboratório 02](./lab2_arquivos/)** — Extração de Características (*Features*)
+* 📁 **[Laboratório 03](./lab3_arquivos/)** — Alinhamento, Homografia 2D e Mosaico
+* 📁 **[Laboratório 04](./lab4_arquivos/)** — Calibração de Câmeras
+* 📁 **[Laboratório 05](./lab5_arquivos/)** — Câmera Estéreo
+* 📁 **[Laboratório 06](./lab6_arquivos/)** — *Depth Map* (Mapa de Profundidade)
+* 📁 **[Laboratório 07](./lab7/)** — Introdução às Redes CNN (*Convolutional Neural Network*)
+* 📁 **[Laboratório 08](./lab8_arquivos/)** — Rastreamento de Objetos
+
 ---
 
 ## 👥 Integrantes do Grupo
 
-*   **Eduarda Alexandre de Salles** — RA: 11202320551
-*   **Gustavo de Paula Souza** — RA: 11202130568
-*   **Paloma Cristina Santana** — RA: 11201921396
+* **Eduarda Alexandre de Salles** — RA: 11202320551
+* **Gustavo de Paula Souza** — RA: 11202130568
+* **Paloma Cristina Santana** — RA: 11201921396
