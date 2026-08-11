@@ -1111,7 +1111,7 @@
             </div>
         </details>
 
-        <!-- SEÇÃO 2: MODELAGEM FUNCIONAL E MÉTODOS DE ENGENHARIA -->
+       <!-- SEÇÃO 2: MODELAGEM FUNCIONAL E MÉTODOS DE ENGENHARIA -->
         <details class="main-section">
             <summary onclick="toggleIcon(this)">
                 <span>2. Modelagem Funcional e Métodos de Engenharia</span>
@@ -1208,10 +1208,18 @@
                     </div>
                 </div>
 
-                <h3>Avaliação Funcional e Métricas</h3>
-                <p><strong>Resumo:</strong> Ensaios práticos controlados com voluntários executando Atividades de Vida Diária (AVDs) e quedas simuladas para tabulação estatística.</p>
+                <h3>Avaliação Funcional e Métricas do Modelo</h3>
+                <p><strong>Resumo:</strong> Ensaios práticos controlados e execução de inferência cinemática no dataset de validação para tabulação estatística dos parâmetros de rastreamento e sensibilidade do modelo.</p>
 
                 <div class="spec-grid">
+                    <div class="spec-card" style="border-top-color: #2563eb;">
+                        <strong>Mapeamento Cinemático</strong>
+                        <p>O rastreamento via SSDLite320 MobileNetV3 registrou picos de velocidade de até <strong>5500 px/s</strong> na variação do centroide durante quedas simuladas.</p>
+                    </div>
+                    <div class="spec-card" style="border-top-color: #2563eb;">
+                        <strong>Tempo de Resposta</strong>
+                        <p>Tempo médio de resposta de <strong>1,55s</strong> para o disparo de análise na janela de inspeção local e classificação do evento.</p>
+                    </div>
                     <div class="spec-card" style="border-top-color: #a855f7;">
                         <strong>Sensibilidade (Recall)</strong>
                         <div style="margin: 0.5rem 0;">
@@ -1222,9 +1230,8 @@
                                 </div>
                             </div>
                         </div>
-                        <p>Mede a taxa de sucesso em detectar quedas reais. O foco é zerar os Falsos Negativos (FN).</p>
+                        <p>Taxa de detecção de quedas em <strong>100%</strong> nos testes do dataset, zerando a ocorrência de Falsos Negativos (FN).</p>
                     </div>
-
                     <div class="spec-card" style="border-top-color: #a855f7;">
                         <strong>Precisão</strong>
                         <div style="margin: 0.5rem 0;">
@@ -1235,7 +1242,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p>Mede o índice de alarmes verdadeiros, monitorando o impacto de Falsos Positivos (FP) no cotidiano.</p>
+                        <p>Mede o índice de alarmes verdadeiros, monitorando a contenção de Falsos Positivos (FP) em Atividades de Vida Diária (AVDs).</p>
                     </div>
                 </div>
             </div>
@@ -1404,18 +1411,17 @@
                     </table>
                 </div>
 
-                <h3>Métricas da Escala de Usabilidade de Sistema (SUS)</h3>
-                <p>O indicador **SUS (System Usability Scale)** atingiu a marca de **94,29 pontos em 100**, enquadrando o protótipo na categoria de excelência **A+**. O índice geral de favorabilidade das respostas das perguntas Q1 a Q11 atingiu **94,8%**, registrando **0,0% de rejeição** entre os usuários testados.</p>
+            <h3>Métricas da Escala de Usabilidade de Sistema (SUS)</h3>
+            <p>O indicador <strong>SUS (System Usability Scale)</strong> atingiu a marca de <strong>94,29 pontos em 100</strong>, enquadrando o protótipo na categoria de excelência <strong>A+</strong>. O índice geral de favorabilidade das respostas das perguntas Q1 a Q11 atingiu <strong>94,8%</strong>, registrando <strong>0,0% de rejeição</strong> entre os usuários testados.</p>
 
-                <div class="spec-grid">
-                    <div class="spec-card" style="border-top-color: #10b981;">
-                        <strong>Mapeamento Cinemático e Tempo de Resposta</strong>
-                        <p>O rastreamento via SSDLite320 MobileNetV3 registrou picos de velocidade de até <strong>5500 px/s</strong> com tempo médio de resposta de <strong>1,55s</strong> para disparo de análise na janela de inspeção local.</p>
-                    </div>
-                    <div class="spec-card" style="border-top-color: #2563eb;">
-                        <strong>Evoluções Futuras Recomendadas</strong>
-                        <p>Inclusão de disparadores remotos (SMS/push notification), ampliação do alcance focal da câmera e suporte para tracking simultâneo de múltiplos idosos na mesma cena.</p>
-                    </div>
+            <div class="spec-grid">
+                <div class="spec-card" style="border-top-color: #10b981;">
+                    <strong>Score Global SUS</strong>
+                    <p>A pontuação média de <strong>94,29 / 100</strong> consolida um nível de usabilidade de classe mundial, refletindo facilidade de aprendizado e alta confiabilidade no fluxo do sistema.</p>
+                </div>
+                <div class="spec-card" style="border-top-color: #2563eb;">
+                    <strong>Taxa de Favorabilidade</strong>
+                    <p>Atingiu <strong>94,8% de aprovação</strong> nas avaliações individuais dos 7 voluntários, registrando <strong>0,0% de rejeição</strong> para os itens essenciais de interface e navegação.</p>
                 </div>
             </div>
         </details>
