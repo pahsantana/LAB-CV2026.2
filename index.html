@@ -314,7 +314,7 @@
         }
 
         /* ============================================================ */
-        /* TABELA DE TESTES */
+        /* TABELAS DE TESTES E RESULTADOS */
         /* ============================================================ */
         .test-table-wrapper {
             overflow-x: auto;
@@ -324,21 +324,22 @@
         .test-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .test-table th {
             background: var(--primary);
             color: var(--white);
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 0.6rem;
             text-align: left;
             font-weight: 600;
+            white-space: normal;
         }
 
         .test-table td {
-            padding: 0.75rem 1rem;
+            padding: 0.6rem 0.6rem;
             border-bottom: 1px solid var(--border);
-            vertical-align: top;
+            vertical-align: middle;
         }
 
         .test-table tr:nth-child(even) {
@@ -357,16 +358,6 @@
             padding: 0.15rem 0.6rem;
             border-radius: 4px;
             font-size: 0.8rem;
-        }
-
-        .test-result-ok {
-            color: #10b981;
-            font-weight: 700;
-        }
-
-        .test-result-pending {
-            color: #eab308;
-            font-weight: 700;
         }
 
         /* ============================================================ */
@@ -446,7 +437,7 @@
         }
 
         /* ============================================================ */
-        /* CARROSSEL AUTOMÁTICO - VERSÃO FINAL */
+        /* CARROSSEL AUTOMÁTICO */
         /* ============================================================ */
         .gallery-wrapper {
             margin: 1.5rem 0;
@@ -557,7 +548,6 @@
             letter-spacing: 0.3px;
         }
 
-        /* Botões de navegação */
         .carousel-btn {
             position: absolute;
             top: 45%;
@@ -583,19 +573,9 @@
             transform: translateY(-50%) scale(1.08);
         }
 
-        .carousel-btn:active {
-            transform: translateY(-50%) scale(0.95);
-        }
+        .carousel-btn.prev { left: 16px; }
+        .carousel-btn.next { right: 16px; }
 
-        .carousel-btn.prev {
-            left: 16px;
-        }
-
-        .carousel-btn.next {
-            right: 16px;
-        }
-
-        /* Dots de navegação */
         .carousel-dots {
             display: flex;
             justify-content: center;
@@ -615,11 +595,6 @@
             padding: 0;
         }
 
-        .carousel-dots .dot:hover {
-            background: #94a3b8;
-            transform: scale(1.1);
-        }
-
         .carousel-dots .dot.active {
             background: var(--secondary);
             transform: scale(1.3);
@@ -632,10 +607,8 @@
             color: #94a3b8;
             margin-top: 0.3rem;
             font-weight: 500;
-            letter-spacing: 0.5px;
         }
 
-        /* Barra de progresso */
         .carousel-progress {
             position: absolute;
             bottom: 0;
@@ -645,7 +618,6 @@
             width: 0%;
             transition: width 0.1s linear;
             z-index: 5;
-            border-radius: 0 0 0 4px;
         }
 
         /* ============================================================ */
@@ -747,9 +719,6 @@
             padding-top: 1px;
         }
 
-        /* ============================================================ */
-        /* RODAPÉ CENTRALIZADO */
-        /* ============================================================ */
         footer {
             text-align: center;
             padding: 2.5rem;
@@ -776,82 +745,20 @@
             margin-top: 0.5rem;
         }
 
-        /* ============================================================ */
-        /* RESPONSIVIDADE */
-        /* ============================================================ */
         @media (max-width: 600px) {
-            .tab-btn {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.8rem;
-            }
-            .interview-profile-card {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-            .carousel-item .photo-img {
-                height: 280px;
-                padding: 0.5rem;
-            }
-            .carousel-item {
-                min-height: 300px;
-            }
-            .carousel-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 1.1rem;
-            }
-            .carousel-btn.prev {
-                left: 8px;
-            }
-            .carousel-btn.next {
-                right: 8px;
-            }
-            .carousel-container.open {
-                max-height: 800px;
-                padding: 1rem;
-            }
-            .carousel-item .photo-info h4 {
-                font-size: 0.9rem;
-            }
-            .carousel-item .photo-info p {
-                font-size: 0.8rem;
-            }
-            .section-content {
-                padding: 0 1rem 1.5rem 1rem;
-            }
-            .main-section summary {
-                padding: 1.25rem 1rem;
-                font-size: 1.1rem;
-            }
-            footer {
-                padding: 1.5rem;
-            }
-            .test-table {
-                font-size: 0.75rem;
-            }
-            .test-table th,
-            .test-table td {
-                padding: 0.4rem 0.5rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .carousel-item .photo-img {
-                height: 220px;
-            }
-            .carousel-item {
-                min-height: 250px;
-            }
-            .carousel-container.open {
-                max-height: 600px;
-                padding: 0.75rem;
-            }
-            .carousel-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 0.9rem;
-            }
+            .tab-btn { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
+            .interview-profile-card { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .carousel-item .photo-img { height: 280px; padding: 0.5rem; }
+            .carousel-item { min-height: 300px; }
+            .carousel-btn { width: 36px; height: 36px; font-size: 1.1rem; }
+            .carousel-btn.prev { left: 8px; }
+            .carousel-btn.next { right: 8px; }
+            .carousel-container.open { max-height: 800px; padding: 1rem; }
+            .section-content { padding: 0 1rem 1.5rem 1rem; }
+            .main-section summary { padding: 1.25rem 1rem; font-size: 1.1rem; }
+            footer { padding: 1.5rem; }
+            .test-table { font-size: 0.75rem; }
+            .test-table th, .test-table td { padding: 0.4rem 0.3rem; }
         }
     </style>
 </head>
@@ -889,7 +796,7 @@
             <div class="section-content">
                 <h3>Contexto e Cenário</h3>
                 <p><strong>Resumo:</strong> Monitoramento óptico passivo em tempo real focado em ambientes residenciais e Instituições de Longa Permanência (ILPIs) para detecção de quedas sem o uso de dispositivos vestíveis.</p>
-                <p>O envelhecimento populacional traz desafios severos à segurança de idosos. Este projeto aplica câmeras monoculares fixas em tetos ou áreas de tráfego comum para identificar acidentes imediatamente. O diferencial crítico está na garantia de privacidade: o fluxo de imagens passa apenas por processamento matemático local e é descartado imediatamente na borda (*Edge Computing*), prevenindo qualquer vazamento de dados ou imagens íntimas.</p>
+                <p>O envelhecimento populacional traz desafios severos à segurança de idosos. Este projeto aplica câmeras monoculares fixas em tetos ou áreas de tráfego comum para identificar acidentes imediatamente. O diferencial crítico está na garantia de privacidade: o fluxo de imagens passa apenas por processamento matemático local e é descartado imediatamente na borda (<em>Edge Computing</em>), prevenindo qualquer vazamento de dados ou imagens íntimas.</p>
 
                 <div class="story-box">
                     <p><strong>Motivação Familiar Real (Histórico de Paloma):</strong> A urgência desta solução fundamenta-se diretamente em históricos familiares severos vividos pela integrante Paloma. O núcleo familiar possui um perfil de extrema longevidade, composto por familiares muito idosos: um avô de 90 anos, uma avó de 80 anos, tios-avós de 90, 93 e impressionantes 102 anos, além de sua bisavó com Alzheimer que faleceu com 99 anos. Eventos reais graves já acometeram o grupo, como sua avó materna que residia sozinha e permaneceu sem auxílio imediato após sofrer uma queda; um acidente grave na garagem sofrido por seu avô paterno, que resultou em desmaio e fratura do fêmur em quatro partes; e a bisavó que, após uma queda crítica próxima ao elevador, precisou de transferência permanente para uma instituição especializada devido à perda de mobilidade física.</p>
@@ -902,7 +809,6 @@
                 <h3>Fase de Empatia: Roteiro de Entrevistas</h3>
                 <p>Consolidação metodológica com 6 perfis estratégicos: 2 usuários idosos finais e 4 familiares responsáveis diretos. Navegue pelas abas abaixo para visualizar as respostas completas de cada entrevistado, consolidadas a partir das fichas de avaliação aplicadas:</p>
 
-                <!-- ABAS DINÂMICAS COM DADOS DA PLANILHA -->
                 <div class="interview-tabs">
                     <div class="tab-nav" id="tabNav">
                         <button class="tab-btn active" data-tab="tab1">👤 Rosa Canova</button>
@@ -913,7 +819,6 @@
                         <button class="tab-btn" data-tab="tab6">📋 Cuidador Rosa</button>
                     </div>
 
-                    <!-- Painel 1: Rosa Godoy Canova -->
                     <div class="tab-panel active" id="tab1">
                         <div class="interview-profile-card">
                             <span class="name">Rosa Godoy Canova — 89 anos</span>
@@ -940,7 +845,6 @@
                         </div>
                     </div>
 
-                    <!-- Painel 2: Gileno Santana -->
                     <div class="tab-panel" id="tab2">
                         <div class="interview-profile-card">
                             <span class="name">Gileno Santana — 89 anos</span>
@@ -967,7 +871,6 @@
                         </div>
                     </div>
 
-                    <!-- Painel 3: Edite Santana -->
                     <div class="tab-panel" id="tab3">
                         <div class="interview-profile-card">
                             <span class="name">Edite Santana — 79 anos</span>
@@ -979,7 +882,7 @@
                         </div>
                         <div class="qa-item">
                             <div class="question"><span class="q-num">P2:</span> Como você avalia a eficácia de dispositivos vestíveis?</div>
-                            <div class="answer">"Acredito que possam funcionar, porém SAMU demorou para atender, tivemos que fazer por conta."</div>
+                            <div class="answer">"Acredito que possam funcionar, porém SAMU demorou para atender, tínhamos que fazer por conta."</div>
                         </div>
                         <div class="qa-item">
                             <div class="question"><span class="q-num">P3:</span> Quais barreiras ou restrições você enxerga quanto à instalação de sistemas baseados em câmeras?</div>
@@ -994,7 +897,6 @@
                         </div>
                     </div>
 
-                    <!-- Painel 4: Edilza Alexandre da Silva -->
                     <div class="tab-panel" id="tab4">
                         <div class="interview-profile-card">
                             <span class="name">Edilza Alexandre da Silva — 65 anos</span>
@@ -1021,7 +923,6 @@
                         </div>
                     </div>
 
-                    <!-- Painel 5: Adevaldo Gomes da Silva -->
                     <div class="tab-panel" id="tab5">
                         <div class="interview-profile-card">
                             <span class="name">Adevaldo Gomes da Silva — 67 anos</span>
@@ -1048,7 +949,6 @@
                         </div>
                     </div>
 
-                    <!-- Painel 6: Cuidador de Rosa Canova -->
                     <div class="tab-panel" id="tab6">
                         <div class="interview-profile-card">
                             <span class="name">Cuidador de Rosa Godoy Canova</span>
@@ -1076,9 +976,6 @@
                     </div>
                 </div>
 
-                <!-- ============================================================ -->
-                <!-- REFERÊNCIAS DO FORMULÁRIO DE ENTREVISTA                       -->
-                <!-- ============================================================ -->
                 <details class="ref-card">
                     <summary>
                         <span>📋 Referências para Elaboração do Roteiro de Entrevista</span>
@@ -1093,54 +990,36 @@
                                 <span class="ref-badge">A</span>
                                 <span class="ref-text">
                                     <strong>ALBUQUERQUE, F. C. et al.</strong> <em>Abordagens qualitativas para identificação de necessidades de idosos em domicílio.</em> Revista Brasileira de Geriatria e Gerontologia, v. 22, n. 3, 2019.
-                                    <span style="display:block; font-size:0.8rem; color:#64748b; margin-top:0.2rem;">
-                                        → Orienta sobre a estruturação de perguntas abertas que exploram percepções de segurança, autonomia e aceitação tecnológica em populações idosas.
-                                    </span>
                                 </span>
                             </li>
                             <li>
                                 <span class="ref-badge">B</span>
                                 <span class="ref-text">
                                     <strong>QUEIROZ, A. C. S. et al.</strong> <em>Fatores que influenciam a adesão de idosos a dispositivos assistivos.</em> Geriatrics & Gerontology Aging, v. 15, e210012, 2021.
-                                    <span style="display:block; font-size:0.8rem; color:#64748b; margin-top:0.2rem;">
-                                        → Justifica a inclusão das perguntas sobre resistência a wearables e barreiras ergonômicas/cognitivas.
-                                    </span>
                                 </span>
                             </li>
                             <li>
                                 <span class="ref-badge">C</span>
                                 <span class="ref-text">
                                     <strong>MARTINS, A. B.; OLIVEIRA, M. C.</strong> <em>Privacidade e envelhecimento: percepções sobre monitoramento ambiental.</em> Cadernos de Ética e Tecnologia, v. 8, n. 2, p. 112-127, 2022.
-                                    <span style="display:block; font-size:0.8rem; color:#64748b; margin-top:0.2rem;">
-                                        → Base para as perguntas que abordam a tensão entre segurança e privacidade, especialmente no uso de câmeras.
-                                    </span>
                                 </span>
                             </li>
                             <li>
                                 <span class="ref-badge">D</span>
                                 <span class="ref-text">
                                     <strong>INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA (IBGE).</strong> <em>Pesquisa Nacional de Saúde: Perfil dos Idosos Brasileiros.</em> Rio de Janeiro: IBGE, 2023.
-                                    <span style="display:block; font-size:0.8rem; color:#64748b; margin-top:0.2rem;">
-                                        → Contextualiza a relevância epidemiológica do tema e orienta a formulação das perguntas sobre histórico de quedas.
-                                    </span>
                                 </span>
                             </li>
                             <li>
                                 <span class="ref-badge">E</span>
                                 <span class="ref-text">
                                     <strong>LIMA, R. F.; ANDRADE, T. S.</strong> <em>Metodologias participativas no desenvolvimento de tecnologias assistivas.</em> Revista de Engenharia Biomédica, v. 14, n. 1, p. 45-59, 2023.
-                                    <span style="display:block; font-size:0.8rem; color:#64748b; margin-top:0.2rem;">
-                                        → Embasou a abordagem de escuta ativa e a adaptação da linguagem das perguntas aos diferentes perfis de entrevistados.
-                                    </span>
                                 </span>
                             </li>
                         </ul>
                     </div>
                 </details>
 
-                <!-- ============================================================ -->
-                <!-- CARROSSEL AUTOMÁTICO - VERSÃO FINAL                          -->
-                <!-- ============================================================ -->
                 <h3 style="margin-top:2.5rem;">Galeria de Fotos do Projeto</h3>
                 <p style="margin-bottom:0.75rem;">Registro visual das famílias, idosos e integrantes que participaram ativamente da elaboração deste estudo. Incluindo a foto da bisavó Rosa Berdum Perasolli (mãe da avó Edite) com a Paloma recém-nascida — uma imagem que simboliza a conexão entre gerações e a motivação profunda deste projeto.</p>
 
@@ -1154,9 +1033,8 @@
                     <div class="carousel-container" id="carouselContainer">
                         <div class="carousel-wrapper" id="carouselWrapper">
                             <div class="carousel-track" id="carouselTrack">
-                                <!-- Item 1: Bisavó Rosa com Paloma recém-nascida -->
                                 <div class="carousel-item">
-                                    <img class="photo-img" src="projeto/pics/BisavóRosa-Paloma.jpeg" alt="Bisavó Rosa Berdum Perasolli com Paloma recém-nascida" onerror="this.style.display='none'">
+                                    <img class="photo-img" src="projeto/pics/BisavoRosa-Paloma.jpeg" alt="Bisavó Rosa Berdum Perasolli com Paloma recém-nascida" onerror="this.src='projeto/pics/bisavorosa-paloma.jpeg'">
                                     <div class="photo-info">
                                         <h4>Rosa Berdum Perasolli</h4>
                                         <p>Bisavó de Paloma, com Paloma recém-nascida. Uma das maiores inspirações deste projeto.</p>
@@ -1164,9 +1042,8 @@
                                     </div>
                                 </div>
 
-                                <!-- Item 2 -->
                                 <div class="carousel-item">
-                                    <img class="photo-img" src="projeto/pics/Rosa-Gustavo-Mae.jpeg" alt="Rosa Godoy Canova com Gustavo e sua mãe" onerror="this.style.display='none'">
+                                    <img class="photo-img" src="projeto/pics/Rosa-Gustavo-Mae.jpeg" alt="Rosa Godoy Canova com Gustavo e sua mãe" onerror="this.src='projeto/pics/rosa-gustavo-mae.jpeg'">
                                     <div class="photo-info">
                                         <h4>Rosa Godoy Canova</h4>
                                         <p>Avó do Gustavo. Com a mãe do Gustavo (cuidadora).</p>
@@ -1174,9 +1051,8 @@
                                     </div>
                                 </div>
 
-                                <!-- Item 3 -->
                                 <div class="carousel-item">
-                                    <img class="photo-img" src="projeto/pics/Rosa-Gustavo-Pai.jpeg" alt="Rosa Godoy Canova com Gustavo e seu pai" onerror="this.style.display='none'">
+                                    <img class="photo-img" src="projeto/pics/Rosa-Gustavo-Pai.jpeg" alt="Rosa Godoy Canova com Gustavo e seu pai" onerror="this.src='projeto/pics/rosa-gustavo-pai.jpeg'">
                                     <div class="photo-info">
                                         <h4>Rosa Godoy Canova</h4>
                                         <p>Avó do Gustavo. Com o pai do Gustavo (cuidador).</p>
@@ -1184,9 +1060,8 @@
                                     </div>
                                 </div>
 
-                                <!-- Item 4 -->
                                 <div class="carousel-item">
-                                    <img class="photo-img" src="projeto/pics/Paloma-GilenoSantana.jpeg" alt="Paloma com seu avô Gileno Santana" onerror="this.style.display='none'">
+                                    <img class="photo-img" src="projeto/pics/Paloma-GilenoSantana.jpeg" alt="Paloma com seu avô Gileno Santana" onerror="this.src='projeto/pics/paloma-gilenosantana.jpeg'">
                                     <div class="photo-info">
                                         <h4>Gileno Santana</h4>
                                         <p>Avô de Paloma. Convívio familiar e acompanhamento diário.</p>
@@ -1194,9 +1069,8 @@
                                     </div>
                                 </div>
 
-                                <!-- Item 5 -->
                                 <div class="carousel-item">
-                                    <img class="photo-img" src="projeto/pics/Paloma-EditeSantana.jpeg" alt="Paloma com sua avó Edite Santana" onerror="this.style.display='none'">
+                                    <img class="photo-img" src="projeto/pics/Paloma-EditeSantana.jpeg" alt="Paloma com sua avó Edite Santana" onerror="this.src='projeto/pics/paloma-editesantana.jpeg'">
                                     <div class="photo-info">
                                         <h4>Edite Santana</h4>
                                         <p>Avó de Paloma. Núcleo familiar e cuidado diário.</p>
@@ -1204,9 +1078,8 @@
                                     </div>
                                 </div>
 
-                                <!-- Item 6 -->
                                 <div class="carousel-item">
-                                    <img class="photo-img" src="projeto/pics/Eduarda-Edilza.jpeg" alt="Eduarda com sua avó Edilza Alexandre da Silva" onerror="this.style.display='none'">
+                                    <img class="photo-img" src="projeto/pics/Eduarda-Edilza.jpeg" alt="Eduarda com sua avó Edilza Alexandre da Silva" onerror="this.src='projeto/pics/eduarda-edilza.jpeg'">
                                     <div class="photo-info">
                                         <h4>Edilza Alexandre da Silva</h4>
                                         <p>Avó de Eduarda. Mora com Eduarda e Adevaldo.</p>
@@ -1214,9 +1087,8 @@
                                     </div>
                                 </div>
 
-                                <!-- Item 7 -->
                                 <div class="carousel-item">
-                                    <img class="photo-img" src="projeto/pics/Eduarda-Adevaldo.jpeg" alt="Eduarda com seu avô Adevaldo Gomes da Silva" onerror="this.style.display='none'">
+                                    <img class="photo-img" src="projeto/pics/Eduarda-Adevaldo.jpeg" alt="Eduarda com seu avô Adevaldo Gomes da Silva" onerror="this.src='projeto/pics/eduarda-adevaldo.jpeg'">
                                     <div class="photo-info">
                                         <h4>Adevaldo Gomes da Silva</h4>
                                         <p>Avô de Eduarda. Convívio doméstico em que moram juntos.</p>
@@ -1225,15 +1097,12 @@
                                 </div>
                             </div>
 
-                            <!-- Botões de navegação -->
                             <button class="carousel-btn prev" id="carouselPrev" aria-label="Anterior">‹</button>
                             <button class="carousel-btn next" id="carouselNext" aria-label="Próximo">›</button>
 
-                            <!-- Barra de progresso -->
                             <div class="carousel-progress" id="carouselProgress"></div>
                         </div>
 
-                        <!-- Dots de navegação -->
                         <div class="carousel-dots" id="carouselDots"></div>
                         <div class="carousel-counter" id="carouselCounter">1 / 7</div>
                     </div>
@@ -1322,7 +1191,7 @@
 
                 <h3>Método de Calibração Óptica</h3>
                 <p><strong>Resumo:</strong> Eliminação de distorções geométricas provocadas por lentes grande-angulares utilizando alvos planares.</p>
-                <p>O protótipo utilizará o <strong>Método de Zhang</strong> (capturas consecutiveis de um padrão de xadrez). O algoritmo computará os seguintes parâmetros para retificação prévia:</p>
+                <p>O protótipo utilizará o <strong>Método de Zhang</strong> (capturas consecutivas de um padrão de xadrez). O algoritmo computará os parâmetros para retificação prévia:</p>
 
                 <div class="spec-grid">
                     <div class="spec-card" style="border-top-color: #10b981;">
@@ -1341,7 +1210,6 @@
 
                 <h3>Avaliação Funcional e Métricas</h3>
                 <p><strong>Resumo:</strong> Ensaios práticos controlados com voluntários executando Atividades de Vida Diária (AVDs) e quedas simuladas para tabulação estatística.</p>
-                <p>Os resultados extraídos da matriz de confusão guiarão o refinamento matemático pelas métricas estruturadas abaixo:</p>
 
                 <div class="spec-grid">
                     <div class="spec-card" style="border-top-color: #a855f7;">
@@ -1453,25 +1321,111 @@
                     <li>📊 Abrir o arquivo CSV de log e verificar se os eventos classificados foram registrados.</li>
                     <li>📋 Comparar os valores do log com os valores apresentados no terminal durante cada teste.</li>
                 </ul>
+            </div>
+        </details>
 
-                <h3>Participantes Voluntários</h3>
-                <p>Os testes serão realizados com os próprios integrantes do grupo e familiares voluntários, respeitando todos os protocolos de segurança e ética. Cada voluntário executará o protocolo de testes (T1 a T6) em múltiplas repetições para garantir consistência estatística.</p>
-                
-                <div style="background:#f0f5ff; border-left:5px solid var(--secondary); padding:1.5rem; margin:1rem 0; border-radius:4px;">
-                    <p style="margin-bottom:0;"><strong>📋 Observação metodológica:</strong> A postura posterior ao evento não participa da classificação. A decisão final é baseada exclusivamente nos parâmetros cinemáticos e geométricos coletados durante a janela de análise.</p>
+        <!-- SEÇÃO 4: SEMINÁRIO E MÉTRICAS DE USABILIDADE (NOVA ETAPA 7) -->
+        <details class="main-section">
+            <summary onclick="toggleIcon(this)">
+                <span>4. Seminário: Validação com Voluntários e Escala SUS</span>
+                <span class="icon-toggle">+</span>
+            </summary>
+            
+            <div class="section-content">
+                <h3>Matriz de Avaliação e Feedback dos Voluntários</h3>
+                <p>Consolidação estatística e qualitativa extraída dos testes práticos executados por 7 voluntários nas dependências do laboratório. O formulário avaliou usabilidade, interatividade e eficiência na classificação de poses (em pé, agachado e caído):</p>
+
+                <div class="test-table-wrapper">
+                    <table class="test-table" style="font-size:0.78rem;">
+                        <thead>
+                            <tr>
+                                <th>Voluntário</th>
+                                <th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Q5</th><th>Q6</th><th>Q7</th><th>Q8</th><th>Q9</th><th>Q10</th><th>Q11</th>
+                                <th>SUS Individual</th>
+                                <th>Pontos Fortes e Observações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>José Victor C. de Carvalho</strong></td>
+                                <td>5</td><td>1</td><td>5</td><td>2</td><td>5</td><td>2</td><td>5</td><td>2</td><td>5</td><td>2</td><td>5</td>
+                                <td><span class="test-badge" style="background:#10b981;">90,0</span></td>
+                                <td>Gostou da implementação prática. Reportou os metadados corretamente após simular a queda.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Antônio Carlos F. Vidal Jr.</strong></td>
+                                <td>5</td><td>1</td><td>4</td><td>1</td><td>5</td><td>1</td><td>5</td><td>1</td><td>4</td><td>1</td><td>3</td>
+                                <td><span class="test-badge" style="background:#10b981;">95,0</span></td>
+                                <td>Elogiou a aplicabilidade. Sugeriu implementação de feedback visual ao vivo na tela.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Vinícius de Morandi Costa</strong></td>
+                                <td>5</td><td>1</td><td>5</td><td>2</td><td>5</td><td>1</td><td>5</td><td>1</td><td>5</td><td>1</td><td>5</td>
+                                <td><span class="test-badge" style="background:#10b981;">97,5</span></td>
+                                <td>Destacou a alta utilidade para a saúde pública e prevenção de emergências.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rafael S. Coelho</strong></td>
+                                <td>5</td><td>1</td><td>5</td><td>3</td><td>5</td><td>1</td><td>5</td><td>1</td><td>4</td><td>1</td><td>3</td>
+                                <td><span class="test-badge" style="background:#10b981;">92,5</span></td>
+                                <td>Identificação precisa entre agachamento e queda no chão. Sugeriu inclusão de alarme sonoro.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ricardo de Andrade</strong></td>
+                                <td>5</td><td>1</td><td>5</td><td>1</td><td>3</td><td>2</td><td>5</td><td>1</td><td>4</td><td>1</td><td>4</td>
+                                <td><span class="test-badge" style="background:#10b981;">90,0</span></td>
+                                <td>Ideia muito interessante. Sugeriu expansão para detecção simultânea de múltiplos usuários no quadro.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Leandro Fernandes Reucci</strong></td>
+                                <td>5</td><td>1</td><td>5</td><td>1</td><td>5</td><td>1</td><td>5</td><td>1</td><td>4</td><td>1</td><td>5</td>
+                                <td><span class="test-badge" style="background:#10b981;">97,5</span></td>
+                                <td>Gostou da velocidade de resposta na detecção. Classificou com precisão as três poses testadas.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Samira Harada</strong></td>
+                                <td>5</td><td>1</td><td>5</td><td>1</td><td>5</td><td>1</td><td>5</td><td>1</td><td>4</td><td>1</td><td>5</td>
+                                <td><span class="test-badge" style="background:#10b981;">97,5</span></td>
+                                <td>Reconheceu o grande impacto social do projeto. Recomendou integração com envio automático de SMS/alertas.</td>
+                            </tr>
+                            <tr style="background:#e0edff; font-weight:700;">
+                                <td>Média Ponderada</td>
+                                <td>5,00</td><td>1,00</td><td>4,86</td><td>1,57</td><td>4,71</td><td>1,29</td><td>5,00</td><td>1,14</td><td>4,29</td><td>1,14</td><td>4,29</td>
+                                <td><span class="test-badge" style="background:#1e3a8a;">94,29</span></td>
+                                <td>A+ (Excelente Nível de Usabilidade)</td>
+                            </tr>
+                            <tr style="background:#f0f5ff; font-weight:600;">
+                                <td>Favorabilidade (%)</td>
+                                <td>100%</td><td>100%</td><td>100%</td><td>85,7%</td><td>85,7%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>71,4%</td>
+                                <td><span class="test-badge" style="background:#10b981;">94,8%</span></td>
+                                <td>Taxa Global de Aceitação Pós-Testes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Métricas da Escala de Usabilidade de Sistema (SUS)</h3>
+                <p>O indicador **SUS (System Usability Scale)** atingiu a marca de **94,29 pontos em 100**, enquadrando o protótipo na categoria de excelência **A+**. O índice geral de favorabilidade das respostas das perguntas Q1 a Q11 atingiu **94,8%**, registrando **0,0% de rejeição** entre os usuários testados.</p>
+
+                <div class="spec-grid">
+                    <div class="spec-card" style="border-top-color: #10b981;">
+                        <strong>Mapeamento Cinemático e Tempo de Resposta</strong>
+                        <p>O rastreamento via SSDLite320 MobileNetV3 registrou picos de velocidade de até <strong>5500 px/s</strong> com tempo médio de resposta de <strong>1,55s</strong> para disparo de análise na janela de inspeção local.</p>
+                    </div>
+                    <div class="spec-card" style="border-top-color: #2563eb;">
+                        <strong>Evoluções Futuras Recomendadas</strong>
+                        <p>Inclusão de disparadores remotos (SMS/push notification), ampliação do alcance focal da câmera e suporte para tracking simultâneo de múltiplos idosos na mesma cena.</p>
+                    </div>
                 </div>
             </div>
         </details>
 
     </main>
 
-    <!-- ============================================================ -->
-    <!-- RODAPÉ CENTRALIZADO                                           -->
-    <!-- ============================================================ -->
     <footer>
         <div class="footer-content">
             <p>&copy; 2026 - Projeto de Visão Computacional — ESZA019</p>
-            <p class="sub">Dados consolidados a partir de fichas de avaliação aplicadas com familiares e idosos.</p>
+            <p class="sub">Dados consolidados a partir de fichas de avaliação e seminário de validação prática.</p>
         </div>
     </footer>
 
@@ -1487,7 +1441,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Abas das entrevistas
             const tabNav = document.getElementById('tabNav');
             if (tabNav) {
                 const tabs = tabNav.querySelectorAll('.tab-btn');
@@ -1506,9 +1459,6 @@
                 });
             }
 
-            // ============================================================
-            // CARROSSEL AUTOMÁTICO - VERSÃO FINAL
-            // ============================================================
             const toggleBtn = document.getElementById('galleryToggle');
             const container = document.getElementById('carouselContainer');
             const track = document.getElementById('carouselTrack');
@@ -1529,13 +1479,9 @@
                 let progressStartTime = 0;
                 let isPaused = false;
 
-                // Atualizar o contador para 7 fotos
-                if (counter) {
-                    counter.textContent = `1 / ${total}`;
-                }
+                if (counter) counter.textContent = `1 / ${total}`;
 
                 if (dotsContainer) {
-                    // Limpar dots existentes
                     dotsContainer.innerHTML = '';
                     for (let i = 0; i < total; i++) {
                         const dot = document.createElement('button');
@@ -1544,7 +1490,7 @@
                         dot.addEventListener('click', function() {
                             const index = parseInt(this.dataset.index);
                             goToSlide(index);
-                            resetAutoPlay();
+                            resetProgress();
                         });
                         dotsContainer.appendChild(dot);
                     }
@@ -1563,49 +1509,30 @@
                         d.classList.toggle('active', i === currentIndex);
                     });
 
-                    if (counter) {
-                        counter.textContent = `${currentIndex + 1} / ${total}`;
-                    }
+                    if (counter) counter.textContent = `${currentIndex + 1} / ${total}`;
 
                     resetProgress();
                 }
 
-                function nextSlide() {
-                    goToSlide(currentIndex + 1);
-                }
-
-                function prevSlide() {
-                    goToSlide(currentIndex - 1);
-                }
+                function nextSlide() { goToSlide(currentIndex + 1); }
+                function prevSlide() { goToSlide(currentIndex - 1); }
 
                 function resetProgress() {
-                    if (progressBar) {
-                        progressBar.style.width = '0%';
-                    }
+                    if (progressBar) progressBar.style.width = '0%';
                     progressStartTime = Date.now();
-                    if (progressInterval) {
-                        clearInterval(progressInterval);
-                    }
-                    if (isAutoPlaying && !isPaused) {
-                        startProgressAnimation();
-                    }
+                    if (progressInterval) clearInterval(progressInterval);
+                    if (isAutoPlaying && !isPaused) startProgressAnimation();
                 }
 
                 function startProgressAnimation() {
-                    if (progressInterval) {
-                        clearInterval(progressInterval);
-                    }
+                    if (progressInterval) clearInterval(progressInterval);
                     progressStartTime = Date.now();
                     progressInterval = setInterval(() => {
                         if (!isAutoPlaying || isPaused) return;
                         const elapsed = Date.now() - progressStartTime;
                         const progress = Math.min((elapsed / AUTO_PLAY_DELAY) * 100, 100);
-                        if (progressBar) {
-                            progressBar.style.width = `${progress}%`;
-                        }
-                        if (progress >= 100) {
-                            nextSlide();
-                        }
+                        if (progressBar) progressBar.style.width = `${progress}%`;
+                        if (progress >= 100) nextSlide();
                     }, 50);
                 }
 
@@ -1619,15 +1546,7 @@
 
                 function resumeAutoPlay() {
                     isPaused = false;
-                    if (isAutoPlaying) {
-                        resetProgress();
-                    }
-                }
-
-                function startAutoPlay() {
-                    isAutoPlaying = true;
-                    isPaused = false;
-                    resetProgress();
+                    if (isAutoPlaying) resetProgress();
                 }
 
                 if (toggleBtn && container) {
@@ -1635,13 +1554,13 @@
                         const isOpen = container.classList.toggle('open');
                         this.classList.toggle('active');
                         const span = this.querySelector('span:first-child');
-                        if (span) {
-                            span.textContent = isOpen ? '📸 Ocultar Galeria' : '📸 Ver Galeria Completa';
-                        }
+                        if (span) span.textContent = isOpen ? '📸 Ocultar Galeria' : '📸 Ver Galeria Completa';
                         
                         if (isOpen) {
                             setTimeout(() => {
-                                startAutoPlay();
+                                isAutoPlaying = true;
+                                isPaused = false;
+                                resetProgress();
                             }, 500);
                         } else {
                             pauseAutoPlay();
@@ -1649,45 +1568,13 @@
                     });
                 }
 
-                if (prevBtn) {
-                    prevBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        prevSlide();
-                        resetAutoPlay();
-                    });
-                }
-
-                if (nextBtn) {
-                    nextBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        nextSlide();
-                        resetAutoPlay();
-                    });
-                }
+                if (prevBtn) prevBtn.addEventListener('click', function(e) { e.stopPropagation(); prevSlide(); });
+                if (nextBtn) nextBtn.addEventListener('click', function(e) { e.stopPropagation(); nextSlide(); });
 
                 if (wrapper) {
-                    wrapper.addEventListener('mouseenter', function() {
-                        pauseAutoPlay();
-                    });
-
+                    wrapper.addEventListener('mouseenter', pauseAutoPlay);
                     wrapper.addEventListener('mouseleave', function() {
-                        if (container.classList.contains('open')) {
-                            resumeAutoPlay();
-                        }
-                    });
-                }
-
-                if (wrapper) {
-                    wrapper.addEventListener('touchstart', function() {
-                        pauseAutoPlay();
-                    });
-
-                    wrapper.addEventListener('touchend', function() {
-                        if (container.classList.contains('open')) {
-                            setTimeout(() => {
-                                resumeAutoPlay();
-                            }, 3000);
-                        }
+                        if (container.classList.contains('open')) resumeAutoPlay();
                     });
                 }
 
