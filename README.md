@@ -34,7 +34,7 @@ O repositório está estruturado para contemplar a proposta, os scripts de execu
 * 📁 **[Laboratório 05](./lab5_arquivos/)** — Câmera Estéreo
 * 📁 **[Laboratório 06](./lab6_arquivos/)** — *Depth Map* (Mapa de Profundidade)
 * 📁 **[Laboratório 07](./lab7/)** — Introdução às Redes CNN (*Convolutional Neural Network*)
-* 📁 **[Laboratório 08](./lab8_arquivos/)** — Rastreamento de Objetos
+* 📁 **[Laboratório 08](./lab8_arquivos/)** — Rastreamento de Objetos diversos do dataset
 
 ---
 
