@@ -1,0 +1,4 @@
+timestamp,evento,caminho_posturas,duracao_s,deslocamento_vertical_px,velocidade_vertical_px_s,confianca_pessoa
+2026-08-10T20:04:34,EVENTO_NAO_CLASSIFICADO_COMO_QUEDA,em_pe -> agachado -> em_pe,1.55,1.5,7.8,0.99
+2026-08-10T20:04:51,EVENTO_NAO_CLASSIFICADO_COMO_QUEDA,em_pe -> agachado,1.55,8.5,5500.0,0.98
+2026-08-10T20:05:01,EVENTO_NAO_CLASSIFICADO_COMO_QUEDA,em_pe -> agachado,1.55,0.0,0.0,0.88

@@ -1,0 +1,6 @@
+timestamp,evento,caminho_posturas,duracao_s,deslocamento_vertical_px,velocidade_vertical_px_s
+2026-07-29T21:56:06,DEITOU_VOLUNTARIAMENTE,em_pe -> deitado,0.20,0.0,0.0
+2026-07-29T21:56:24,DEITOU_VOLUNTARIAMENTE,em_pe -> deitado,0.19,0.0,0.0
+2026-07-29T21:56:35,DEITOU_VOLUNTARIAMENTE,em_pe -> deitado,0.19,-1.2,-6.7
+2026-07-29T21:57:10,DEITOU_VOLUNTARIAMENTE,em_pe -> deitado,0.20,0.0,0.0
+2026-07-29T21:57:37,DEITOU_VOLUNTARIAMENTE,em_pe -> deitado,0.18,0.0,0.0

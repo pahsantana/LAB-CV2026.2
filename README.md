@@ -1,45 +1,84 @@
-# LAB-CV2026.2 — Visão Computacional Aplicada
+Aqui está o `README.md` atualizado com a adição do **Gemini** na Declaração do Uso de Inteligência Artificial Generativa, mantendo toda a estrutura de diretórios do ambiente:
 
-Repositório destinado ao desenvolvimento das atividades práticas e do projeto final da disciplina **ESZA019 - Visão Computacional**.
+# Projeto de Visão Computacional: Sistema de Detecção de Quedas de Idosos
 
----
-
-## 🚀 Projeto Final
-
-### **Sistema Inteligente de Monitoramento e Aviso de Queda de Idosos Doméstico e em ILPIs**
-O projeto consiste em um sistema de visão computacional voltado para a segurança na terceira idade. Através do processamento de imagens de câmeras locais e algoritmos geométricos/cinemáticos baseados em *Edge Computing*, o sistema identifica quedas em tempo real, preservando totalmente a privacidade e a identidade dos usuários.
-
-* 🔗 **[CLIQUE AQUI PARA ACESSAR A PÁGINA INTERATIVA DO PROJETO](https://pahsantana.github.io/LAB-CV2026.2/)**
+Este repositório contém a documentação, os códigos de laboratório, os scripts do projeto final e as evidências de validação experimental com voluntários do **Sistema de Detecção e Classificação de Quedas**.
 
 ---
 
-## 📂 Organização do Repositório
+## 📁 Estrutura do Repositório (`LAB1_ENVIAR`)
 
-O repositório está estruturado para contemplar a proposta, os scripts de execução, o relatório de testes e as validações do projeto principal, além dos laboratórios práticos da disciplina:
+```text
+LAB1_ENVIAR/
+├── lab1_arquivos/                  # Experimentos e atividades do Laboratório 1
+├── lab2_arquivos/                  # Experimentos e atividades do Laboratório 2
+├── lab3_arquivos/                  # Experimentos e atividades do Laboratório 3
+├── lab4_arquivos/                  # Experimentos e atividades do Laboratório 4
+├── lab5_arquivos/                  # Experimentos e atividades do Laboratório 5
+├── lab6_arquivos/                  # Experimentos e atividades do Laboratório 6
+├── lab7/                          # Experimentos e atividades do Laboratório 7
+├── lab8_arquivos/                  # Experimentos e atividades do Laboratório 8
+│
+├── projeto/                        # Artefatos e datasets de apoio do projeto
+│   ├── pics/                       # Imagens e registros fotográficos do dataset
+│   └── refs/                       # Referências bibliográficas e documentos de apoio
+│
+├── teste_voluntarios/              # Validação prática com voluntários
+│   ├── logs/                       # Registros de eventos gerados em tempo de execução
+│   │   ├── log_detector_pessoas.csv
+│   │   └── log_eventos_queda_otimizado.csv
+│   ├── videos/                     # Registros em vídeo dos testes executados (.mp4)
+│   │   ├── video_detector_pessoas.mp4
+│   │   ├── video_detector_pessoas2.mp4
+│   │   ├── video_detector_pessoas4.mp4
+│   │   ├── video_detector_pessoas5.mp4
+│   │   └── video_detector_pessoas7.mp4
+│   └── teste-voluntarios-dados.ipynb  # Notebook de processamento e análise dos testes
+│
+├── artigo-grupo1-quedaidosos.pdf   # Artigo científico/relatório consolidado do grupo
+├── index.html                      # Interface/página de apresentação interativa
+├── roteiro_teste_detector_quedas.pdf # Roteiro metodológico aplicado aos testes
+├── trabalho_final.ipynb            # Notebook principal do projeto (execução do pipeline)
+└── README.md                       # Documentação principal do repositório
 
-### 🛠️ Projeto Final & Arquivos da Raiz
-* 📁 **[`/projeto`](./projeto/)** — Diretório contendo os assets, componentes e arquivos complementares da página e do sistema do projeto final.
-* 📁 **[`/teste_voluntarios`](./teste_voluntarios/)** — Pasta contendo os relatórios de testes, gravações de vídeo (`video_detector_pessoas.mp4` a `video_detector_pessoas7.mp4`) e o notebook de processamento estatístico `teste-voluntarios-dados.ipynb`.
-* 📄 **[`trabalho_final.ipynb`](./trabalho_final.ipynb)** — Notebook principal com a implementação, pipeline de inferência e testes do detector de quedas.
-* 📄 **[`roteiro_teste_detector_quedas.pdf`](./roteiro_teste_detector_quedas.pdf)** — Documentação do protocolo experimental e cenários de testes validados.
-* 🌐 **[`index.html`](./index.html)** — Interface web interativa apresentando a proposta, estudo de empatia, arquitetura e métricas do projeto.
+```
 
 ---
 
-### 🧪 Índice de Atividades Práticas (Laboratórios)
-* 📁 **[Laboratório 01](./lab1_arquivos/)** — Captura de Imagem e Vídeo
-* 📁 **[Laboratório 02](./lab2_arquivos/)** — Extração de Características (*Features*)
-* 📁 **[Laboratório 03](./lab3_arquivos/)** — Alinhamento, Homografia 2D e Mosaico
-* 📁 **[Laboratório 04](./lab4_arquivos/)** — Calibração de Câmeras
-* 📁 **[Laboratório 05](./lab5_arquivos/)** — Câmera Estéreo
-* 📁 **[Laboratório 06](./lab6_arquivos/)** — *Depth Map* (Mapa de Profundidade)
-* 📁 **[Laboratório 07](./lab7/)** — Introdução às Redes CNN (*Convolutional Neural Network*)
-* 📁 **[Laboratório 08](./lab8_arquivos/)** — Rastreamento de Objetos diversos do dataset
+## ⚙️ Principais Artefatos do Projeto Final
+
+* **`trabalho_final.ipynb`**: Notebook contendo o pipeline principal de Visão Computacional (aquisição, rastreamento via SSDLite320 MobileNetV3, cálculo cinemático e regras de decisão).
+
+
+* **`teste_voluntarios/`**:
+* **`logs/`**: Arquivos CSV com os registros de tempo, velocidade vertical, deslocamento e índice da escala SUS.
+
+
+* **`videos/`**: Amostras gravadas durante os testes práticos de validação em laboratório.
+
+
+* **`teste-voluntarios-dados.ipynb`**: Análise estatística dos logs e das métricas obtidas.
+
+
+
+
+* **`artigo-grupo1-quedaidosos.pdf`**: Documentação formal do projeto em formato de artigo acadêmico.
+
+
+* **`index.html`**: Painel web de apresentação com detalhes da solução, seminário e formulário de usabilidade (Escala SUS).
+
+
 
 ---
 
-## 👥 Integrantes do Grupo
+## 📜 Declaração de Integridade e Uso de IA Generativa (Portaria CNPq nº 2.664/2026)
 
-* **Eduarda Alexandre de Salles** — RA: 11202320551
-* **Gustavo de Paula Souza** — RA: 11202130568
-* **Paloma Cristina Santana** — RA: 11201921396
+Em cumprimento às diretrizes da Portaria CNPq nº 2.664/2026 sobre a transparência e integridade da pesquisa científica:
+
+| Ferramenta de IAG | Fase do Desenvolvimento | Finalidade Específica |
+| --- | --- | --- |
+| **Claude** (*Anthropic*) | Desenvolvimento de Código | Apoio na estruturação, refatoração, sintaxe e otimização dos algoritmos em Python / Jupyter Notebook. |
+| **Gemini** (*Google*) | Redação e Análise de Dados | Auxílio na síntese dos logs de execução, formulação de análises estatísticas, revisão técnica e padronização da documentação final. |
+
+* **Autoria e Controle Humano:** Toda a concepção conceitual, arquitetura do modelo de visão computacional, coleta de dados e condução dos ensaios com voluntários foram idealizadas e executadas integralmente pelos autores, que assumem total responsabilidade pelo conteúdo final.
+
