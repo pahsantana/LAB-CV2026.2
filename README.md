@@ -16,7 +16,7 @@ Este repositório contém a documentação técnica completa, os módulos de apr
 
 ---
 
-## 📁 Estrutura do Repositório (`LAB1_ENVIAR`)
+## 📁 Estrutura do Repositório 
 
 ```text
 ├── lab1_arquivos/                  # Lab 1: Fundamentos de Imagem, Espaços de Cor e Histogramas
@@ -86,7 +86,9 @@ O objetivo principal do projeto final é realizar a detecção automática de qu
 📊 Métricas e Resultados Experimentais
 Os ensaios práticos realizados no laboratório com voluntários demonstraram a eficácia do filtro multicritério:Parâmetro / MétricaLog Antigo / Legado (log_eventos_queda_otimizado.csv)Ensaios Intermediários de BancadaLog Atual de Vídeo (log_detector_pessoas.csv)Padrão de Transiçãoem_pe -> deitado  em_pe -> agachado  em_pe -> agachado -> em_pe e em_pe -> agachado  Janela Temporal ($t$)$\approx 0,18\text{s} - 0,20\text{s}$  $1,50\text{s} - 1,59\text{s}$  Padronizada em $1,55\text{s}$  Picos de Velocidade ($v$)$0,0\text{ px/s}$ a $-6,7\text{ px/s}$  $0,8\text{ px/s}$ a $5000,0\text{ px/s}$  Até $5500,0\text{ px/s}$  Confiança da Detecção
 Não registrada  $0,71$ a $1,00$  $0,88$ a $0,99$ (SSDLite320)  Classificação Obtida
-DEITOU_VOLUNTARIAMENTE  Flutuação entre QUEDA e NAO_QUEDA  EVENTO_NAO_CLASSIFICADO_COMO_QUEDA  Conclusão de Usabilidade: Em movimentos de agachamento rápido, picos isolados de velocidade ($5500,0\text{ px/s}$) foram descartados com sucesso (pontuação $2/4$), evitando falsos alarmes em AVDs.  🚀 Instruções de ExecuçãoPré-requisitos:Python 3.9+Jupyter Notebook / JupyterLabPacotes necessários: opencv-python, torch, torchvision, pandas, numpy, matplotlibExecução do Pipeline do Projeto:Bash# Clonar o repositório e acessar a pasta raiz
+DEITOU_VOLUNTARIAMENTE  Flutuação entre QUEDA e NAO_QUEDA  EVENTO_NAO_CLASSIFICADO_COMO_QUEDA  Conclusão de Usabilidade: Em movimentos de agachamento rápido, picos isolados de velocidade ($5500,0\text{ px/s}$) foram descartados com sucesso (pontuação $2/4$), evitando falsos alarmes em AVDs.  
+🚀 Instruções de Execução
+Pré-requisitos:Python 3.9+Jupyter Notebook / JupyterLabPacotes necessários: opencv-python, torch, torchvision, pandas, numpy, matplotlibExecução do Pipeline do Projeto:Bash# Clonar o repositório e acessar a pasta raiz
 
 #### Iniciar o Jupyter Notebook
 jupyter notebook trabalho_final.ipynb
@@ -98,7 +100,8 @@ Abra o notebook teste_voluntarios/teste-voluntarios-dados.ipynb para visualizar 
  Em cumprimento rigoroso às diretrizes da Portaria CNPq nº 2.664/2026 (Artigo 2º, alíneas c, d e f) sobre integridade acadêmica e transparência na pesquisa científica:Ferramenta de IAG
  Fase do Desenvolvimento
  Finalidade Específica
- Claude (Anthropic)Desenvolvimento de CódigoApoio na estruturação, refatoração, sintaxe e otimização dos algoritmos em Python / Jupyter Notebook.
+ Claude (Anthropic)Desenvolvimento de Código
+ Apoio na estruturação, refatoração, sintaxe e otimização dos algoritmos em Python / Jupyter Notebook.
  Gemini (Google)Redação e Análise de Dados
  Auxílio na síntese dos logs de execução, análises estatísticas, revisão técnica e padronização da documentação final em Markdown.Autoria e Controle Humano: Todo o escopo conceitual, a modelagem dos algoritmos de visão computacional, os critérios cinemáticos e a condução dos testes práticos foram concebidos, implementados e verificados autonomamente pelos autores.
  Responsabilidade Integral: Os autores assumem total responsabilidade pelo conteúdo final do trabalho, garantindo a exatidão das análises, a conformidade acadêmica e a ausência de plágios ou inconsistências técnicas.
