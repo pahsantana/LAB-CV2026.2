@@ -1,107 +1,232 @@
-# Projeto de Visão Computacional: Sistema de Detecção e Classificação de Quedas em Idosos
+# 👴 Sistema de Detecção e Classificação de Quedas em Idosos
 
-Este repositório contém a documentação técnica completa, os módulos de aprendizado prático (Laboratórios 1 a 8), os scripts do projeto final e os registros de testes de usabilidade e validação com voluntários do **Sistema de Detecção e Classificação de Quedas em Tempo Real**.
+> **Visão Computacional em Tempo Real** | Detecção automática de eventos de queda com minimização de falsos positivos em Atividades de Vida Diária (AVDs)
 
-* 🔗 **[CLIQUE AQUI PARA ACESSAR A PÁGINA INTERATIVA DO PROJETO](https://pahsantana.github.io/LAB-CV2026.2/)**
-
----
-
-## 📌 Sumário
-1. [Estrutura do Repositório](#-estrutura-do-repositório-lab1_enviar)
-2. [Conteúdo dos Laboratórios](#-conteúdo-dos-laboratórios-labs)
-3. [Visão Geral do Projeto Final](#-visão-geral-do-projeto-final)
-4. [Métricas e Resultados Experimental](#-métricas-e-resultados-experimentais)
-5. [Instruções de Execução](#-instruções-de-execução)
-6. [Declaração de IA Generativa (CNPq nº 2.664/2026)](#-declaração-de-integridade-e-uso-de-ia-generativa-portaria-cnpq-nº-26642026)
+[![Interativo](https://img.shields.io/badge/Interface-Interativa-blue?style=flat-square)](https://pahsantana.github.io/LAB-CV2026.2/)
+[![Python](https://img.shields.io/badge/Python-3.9+-blue?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-Latest-red?style=flat-square&logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-4.0+-green?style=flat-square&logo=opencv)](https://opencv.org/)
 
 ---
 
-## 📁 Estrutura do Repositório 
+## 📑 Índice Rápido
 
-```text
-├── lab1_arquivos/                  # Lab 1: Fundamentos de Imagem, Espaços de Cor e Histogramas
-├── lab2_arquivos/                  # Lab 2: Operações Ponto a Ponto e Filtragem Espacial
-├── lab3_arquivos/                  # Lab 3: Detecção de Bordas, Gradientes e Transformada de Hough
-├── lab4_arquivos/                  # Lab 4: Operações Morfológicas e Segmentação por Limiarização
-├── lab5_arquivos/                  # Lab 5: Extração de Características (SIFT/ORB) e Contornos
-├── lab6_arquivos/                  # Lab 6: Transformações Geométricas, Homografia e Calibração
-├── lab7/                          # Lab 7: Fluxo Óptico, Rastreamento de Objetos e Análise de Movimento
-├── lab8_arquivos/                  # Lab 8: Introdução a Redes Neurais Convolucionais e Detecção de Objetos
-│
-├── projeto/                        # Artefatos e datasets de apoio do projeto
-│   ├── pics/                       # Imagens e registros fotográficos do dataset
-│   └── refs/                       # Referências bibliográficas e documentos de apoio
-│
-├── teste_voluntarios/              # Validação prática com voluntários
-│   ├── logs/                       # Registros cinemáticos e pontuações de eventos (.csv)
-│   │   ├── log_detector_pessoas.csv
-│   │   └── log_eventos_queda_otimizado.csv
-│   ├── videos/                     # Registros em vídeo dos ensaios em tempo real (.mp4)
-│   │   ├── video_detector_pessoas.mp4
-│   │   ├── video_detector_pessoas2.mp4
-│   │   ├── video_detector_pessoas4.mp4
-│   │   ├── video_detector_pessoas5.mp4
-│   │   └── video_detector_pessoas7.mp4
-│   └── teste-voluntarios-dados.ipynb  # Notebook de processamento e análise estatística dos testes
-│
-├── artigo-grupo1-quedaidosos.pdf   # Artigo científico / relatório formal em PDF
-├── index.html                      # Página/interface web de apresentação e formulários
-├── roteiro_teste_detector_quedas.pdf # Roteiro metodológico aplicado aos testes de campo
-├── trabalho_final.ipynb            # Notebook principal do projeto (pipeline completo)
-└── README.md                       # Documentação principal do repositório
+- [Visão Geral](#-visão-geral)
+- [Estrutura do Repositório](#-estrutura-do-repositório)
+- [Conteúdo dos Laboratórios](#-conteúdo-dos-laboratórios)
+- [Projeto Final](#-projeto-final)
+- [Resultados](#-métricas-e-resultados-experimentais)
+- [Como Usar](#-instruções-de-execução)
+- [Declaração IA](#-declaração-de-integridade)
+
+---
+
+## 🎯 Visão Geral
+
+Este repositório contém a **documentação técnica completa**, **8 módulos de aprendizado prático** (Laboratórios), **scripts do projeto final** e **validação com voluntários** de um sistema inteligente de detecção de quedas em tempo real.
+
+### Destaques
+✅ Detecção em **tempo real** (RGB)  
+✅ Execução em **CPU** (Edge Processing)  
+✅ Minimização de **falsos positivos** em AVDs  
+✅ Validação com **voluntários reais**  
+✅ Interface **interativa** web  
+
+**🔗 [Acesse a página interativa do projeto](https://pahsantana.github.io/LAB-CV2026.2/)**
+
+---
+
+## 📁 Estrutura do Repositório
 
 ```
+LAB-CV2026.2/
+│
+├── 📚 Laboratórios (Labs)
+│   ├── lab1_arquivos/           ↳ Fundamentos de Imagem e Histogramas
+│   ├── lab2_arquivos/           ↳ Filtragem Espacial e Convolução
+│   ├── lab3_arquivos/           ↳ Detecção de Bordas e Transformada Hough
+│   ├── lab4_arquivos/           ↳ Morfologia Matemática e Segmentação
+│   ├── lab5_arquivos/           ↳ Características (SIFT/ORB) e Contornos
+│   ├── lab6_arquivos/           ↳ Transformações Geométricas e Calibração
+│   ├── lab7/                    ↳ Fluxo Óptico e Rastreamento
+│   └── lab8_arquivos/           ↳ CNNs e Detecção de Objetos
+│
+├── 📊 Projeto Final
+│   ├── projeto/
+│   │   ├── pics/                ↳ Dataset fotográfico
+│   │   └── refs/                ↳ Documentação e referências
+│   │
+│   ├── teste_voluntarios/       ↳ Validação prática
+│   │   ├── logs/                ↳ Registros cinemáticos (.csv)
+│   │   ├── videos/              ↳ Ensaios em tempo real (.mp4)
+│   │   └── teste-voluntarios-dados.ipynb
+│   │
+│   ├── trabalho_final.ipynb     ↳ Pipeline completo
+│   └── artigo-grupo1-quedaidosos.pdf
+│
+├── 📄 Documentação
+│   ├── index.html               ↳ Interface web
+│   ├── roteiro_teste_detector_quedas.pdf
+│   └── README.md                ↳ Este arquivo
+│
+└── ⚙️ Configuração
+    └── requirements.txt         ↳ Dependências Python
+```
 
-🛠️ Conteúdo dos Laboratórios (Labs)
+---
 
-lab1_arquivos/: Fundamentos de imagem digital, manipulação de matrizes de pixels, conversões de espaços de cores (RGB, HSV, Grayscale) e análise de histogramas
+## 🧪 Conteúdo dos Laboratórios
 
+| Lab | Tema | Tópicos Principais |
+|-----|------|-------------------|
+| **Lab 1** | 🖼️ Fundamentos de Imagem | Espaços de cor (RGB, HSV, Grayscale), manipulação de pixels, histogramas |
+| **Lab 2** | 🔧 Filtragem Espacial | Convoluções 2D, Blur, Gaussian, Median, Sharpening |
+| **Lab 3** | 📐 Detecção de Bordas | Sobel, Laplaciano, Canny, Transformada de Hough |
+| **Lab 4** | 🎭 Morfologia Matemática | Erosão, Dilatação, Abertura, Fechamento, Limiarização |
+| **Lab 5** | 🔑 Extração de Características | SIFT/ORB, Keypoints, Contornos, Pareamento |
+| **Lab 6** | 📐 Transformações Geométricas | Homografia, Perspectiva, Calibração de câmeras |
+| **Lab 7** | 🎬 Fluxo Óptico e Rastreamento | Lucas-Kanade, Farneback, Tracking de objetos |
+| **Lab 8** | 🧠 Redes Neurais Convolucionais | Arquiteturas CNN, Detecção em tempo real |
 
-.lab2_arquivos/: Operações de filtragem espacial, convoluição 2D, redução de ruído (Blur, Gaussian, Median) e realce de bordas (Sharpening)
+---
 
+## ⚙️ Projeto Final: Arquitetura da Solução
 
-.lab3_arquivos/: Algoritmos de detecção de descontinuidades, operadores de Sobel, Laplaciano, Canny e extração de formas geométricas via Transformada de Hough
+### 🎯 Objetivo
+Detectar automaticamente quedas de idosos em **tempo real**, minimizando falsos positivos em Atividades de Vida Diária (AVDs) como agachar ou sentar.
 
+### 🏗️ Pipeline Técnico
 
-.lab4_arquivos/: Morfologia matemática (Erosão, Dilatação, Abertura e Fechamento) e técnicas de segmentação baseadas em limiarização simples, adaptativa e método de Otsu
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ 1️⃣  RASTREAMENTO DE PESSOAS                                      │
+│     └─ SSDLite320 MobileNetV3 (CPU-optimized, Edge Processing) │
+├─────────────────────────────────────────────────────────────────┤
+│ 2️⃣  ANÁLISE CINEMÁTICA                                           │
+│     └─ Extração de: Centroide, Velocidade (v), Deslocamento (Δy),
+│                     Razão de Aspecto (w/h)                        │
+├─────────────────────────────────────────────────────────────────┤
+│ 3️⃣  MOTOR DE DECISÃO MULTICRITÉRIO                              │
+│     └─ Janela Temporal: 1,55s                                    │
+│     └─ Critério: ≥ 3 de 4 parâmetros acima do limiar crítico    │
+├─────────────────────────────────────────────────────────────────┤
+│ 4️⃣  CLASSIFICAÇÃO FINAL                                          │
+│     └─ QUEDA | NÃO QUEDA | NÃO CLASSIFICADO                     │
+└─────────────────────────────────────────────────────────────────┘
+```
 
+### 📊 Métricas e Resultados Experimentais
 
-.lab5_arquivos/: Identificação e pareamento de pontos de interesse (Keypoints), descritores invariantes a escala/rotação (SIFT/ORB) e hierarquia de contornos
+#### Comparação de Performance
 
+| Métrica | Log Legado | Bancada | Log Atual |
+|---------|-----------|--------|-----------|
+| **Padrão de Transição** | `em_pé → deitado` | `em_pé → agachado` | `múltiplas` |
+| **Janela Temporal (t)** | ≈ 0,18–0,20 s | ≈ 1,50–1,59 s | **1,55 s** (padronizado) |
+| **Velocidade (v)** | 0,0 a -6,7 px/s | 0,8 a 5000,0 px/s | até 5500,0 px/s |
+| **Confiança** | — | 0,71–1,00 | **0,88–0,99** ✅ |
+| **Classificação** | DEITOU_VOLUNTARIAMENTE | Flutuação | EVENTO_NÃO_CLASSIFICADO ✅ |
 
-.lab6_arquivos/: Transformações de perspectiva e afins, estimativa da matriz de homografia e calibração de câmeras para correção de distorções ópticas
+#### 🎯 Conclusão de Usabilidade
+Em movimentos de agachamento rápido, picos isolados de velocidade (**5500,0 px/s**) foram **descartados com sucesso** (pontuação 2/4), evitando **falsos alarmes** em AVDs.
 
+---
 
-.lab7/: Estimação de vetor de movimento por fluxo óptico denso/esparso (Lucas-Kanade, Farneback) e algoritmos de rastreamento de objetos
+## 🚀 Instruções de Execução
 
+### ✅ Pré-requisitos
 
-.lab8_arquivos/: Arquiteturas de Redes Neurais Convolucionais (CNNs) e modelos de detecção em tempo real, servindo de base para o pipeline do projeto final.
+```bash
+Python 3.9+
+Jupyter Notebook / JupyterLab
+```
 
+### 📦 Instalação de Dependências
 
+```bash
+pip install -r requirements.txt
+```
 
-⚙️ Visão Geral do Projeto Final
+**Ou instale manualmente:**
 
-O objetivo principal do projeto final é realizar a detecção automática de quedas de idosos em tempo real a partir de fluxos de vídeo convencionais (RGB), minimizando falsos positivos gerados por Atividades de Vida Diária (AVDs), como agachar ou sentar.Arquitetura da Solução:Rastreamento de Pessoas: Emprego da rede neural profunda SSDLite320 MobileNetV3 otimizada para execução local em CPU (Edge Processing).  Análise Cinemática: Extração do centroide e cálculo do vetor de velocidade vertical ($v$), deslocamento vertical ($\Delta y$) e variação da razão de aspecto ($w/h$) da bounding box.  Motor de Decisão Multicritério: Regra de pontuação acumulativa em janela temporal padronizada de $1,55\text{s}$ após a transição de postura (gatilho). O evento de queda é confirmado apenas se ao menos 3 dos 4 parâmetros cinemáticos atingirem os limiares críticos.  
+```bash
+pip install opencv-python torch torchvision pandas numpy matplotlib jupyter
+```
 
-📊 Métricas e Resultados Experimentais
-Os ensaios práticos realizados no laboratório com voluntários demonstraram a eficácia do filtro multicritério:Parâmetro / MétricaLog Antigo / Legado (log_eventos_queda_otimizado.csv)Ensaios Intermediários de BancadaLog Atual de Vídeo (log_detector_pessoas.csv)Padrão de Transiçãoem_pe -> deitado  em_pe -> agachado  em_pe -> agachado -> em_pe e em_pe -> agachado  Janela Temporal ($t$)$\approx 0,18\text{s} - 0,20\text{s}$  $1,50\text{s} - 1,59\text{s}$  Padronizada em $1,55\text{s}$  Picos de Velocidade ($v$)$0,0\text{ px/s}$ a $-6,7\text{ px/s}$  $0,8\text{ px/s}$ a $5000,0\text{ px/s}$  Até $5500,0\text{ px/s}$  Confiança da Detecção
-Não registrada  $0,71$ a $1,00$  $0,88$ a $0,99$ (SSDLite320)  Classificação Obtida
-DEITOU_VOLUNTARIAMENTE  Flutuação entre QUEDA e NAO_QUEDA  EVENTO_NAO_CLASSIFICADO_COMO_QUEDA  Conclusão de Usabilidade: Em movimentos de agachamento rápido, picos isolados de velocidade ($5500,0\text{ px/s}$) foram descartados com sucesso (pontuação $2/4$), evitando falsos alarmes em AVDs.  
-🚀 Instruções de Execução
-Pré-requisitos:Python 3.9+Jupyter Notebook / JupyterLabPacotes necessários: opencv-python, torch, torchvision, pandas, numpy, matplotlibExecução do Pipeline do Projeto:Bash# Clonar o repositório e acessar a pasta raiz
+### ▶️ Executar o Pipeline Completo
 
-#### Iniciar o Jupyter Notebook
+```bash
+# Clonar repositório
+git clone https://github.com/seu-usuario/LAB-CV2026.2.git
+cd LAB-CV2026.2
+
+# Iniciar Jupyter Notebook
 jupyter notebook trabalho_final.ipynb
-Análise dos Dados dos Voluntários:
-Abra o notebook teste_voluntarios/teste-voluntarios-dados.ipynb para visualizar a consolidação gráfica dos logs e métricas da Escala SUS. 
+```
 
- 📜 Declaração de Integridade e Uso de IA Generativa (Portaria CNPq nº 2.664/2026)
- 
- Em cumprimento rigoroso às diretrizes da Portaria CNPq nº 2.664/2026 (Artigo 2º, alíneas c, d e f) sobre integridade acadêmica e transparência na pesquisa científica:Ferramenta de IAG
- Fase do Desenvolvimento
- Finalidade Específica
- Claude (Anthropic)Desenvolvimento de Código
- Apoio na estruturação, refatoração, sintaxe e otimização dos algoritmos em Python / Jupyter Notebook.
- Gemini (Google)Redação e Análise de Dados
- Auxílio na síntese dos logs de execução, análises estatísticas, revisão técnica e padronização da documentação final em Markdown.Autoria e Controle Humano: Todo o escopo conceitual, a modelagem dos algoritmos de visão computacional, os critérios cinemáticos e a condução dos testes práticos foram concebidos, implementados e verificados autonomamente pelos autores.
- Responsabilidade Integral: Os autores assumem total responsabilidade pelo conteúdo final do trabalho, garantindo a exatidão das análises, a conformidade acadêmica e a ausência de plágios ou inconsistências técnicas.
+O notebook irá:
+1. Carregar o modelo SSDLite320 MobileNetV3
+2. Processar fluxo de vídeo RGB
+3. Extrair cinemática de cada frame
+4. Aplicar filtro multicritério
+5. Gerar relatório de eventos
+
+### 📊 Analisar Dados dos Voluntários
+
+```bash
+jupyter notebook teste_voluntarios/teste-voluntarios-dados.ipynb
+```
+
+Visualizará:
+- 📈 Consolidação gráfica dos logs
+- 📉 Métricas da Escala SUS
+- 📌 Análise estatística dos ensaios
+
+---
+
+## 📚 Arquivos Principais
+
+| Arquivo | Descrição |
+|---------|-----------|
+| `trabalho_final.ipynb` | 🔥 **Pipeline completo** — Execute aqui! |
+| `teste_voluntarios/teste-voluntarios-dados.ipynb` | 📊 Análise e validação prática |
+| `artigo-grupo1-quedaidosos.pdf` | 📄 Relatório científico formal |
+| `index.html` | 🌐 Interface interativa web |
+| `roteiro_teste_detector_quedas.pdf` | 📋 Metodologia dos testes |
+
+---
+
+## 📜 Declaração de Integridade e Uso de IA Generativa
+
+Em cumprimento rigoroso à **Portaria CNPq nº 2.664/2026** (Artigo 2º, alíneas c, d e f):
+
+### 🤖 Ferramentas de IA Generativa Utilizadas
+
+| Ferramenta | Fase | Finalidade |
+|-----------|------|-----------|
+| **Claude** (Anthropic) | Desenvolvimento de Código | Estruturação, refatoração, sintaxe e otimização dos algoritmos Python/Jupyter |
+| **Gemini** (Google) | Redação e Análise de Dados | Síntese de logs, análise estatística, revisão técnica e padronização |
+
+### ✍️ Autoria e Controle Humano
+
+✅ **Escopo Conceitual**: Integralmente concebido pelos autores  
+✅ **Modelagem de Algoritmos**: Implementação autônoma de visão computacional  
+✅ **Critérios Cinemáticos**: Definição e calibração independentes  
+✅ **Testes Práticos**: Condução e verificação pelos autores  
+
+### 📋 Responsabilidade Integral
+
+Os autores assumem **total responsabilidade** pelo conteúdo final, garantindo:
+- ✓ Exatidão das análises
+- ✓ Conformidade acadêmica
+- ✓ Ausência de plágios
+- ✓ Integridade técnica
+
+---
+
+## 📧 Contato e Suporte
+
+- **Problemas técnicos?** Abra uma [Issue](https://github.com/seu-usuario/LAB-CV2026.2/issues)
+- **Dúvidas?** Consulte a [página interativa](https://pahsantana.github.io/LAB-CV2026.2/)
+
+---
