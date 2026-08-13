@@ -2,6 +2,8 @@
 
 Este repositório contém a documentação técnica completa, os módulos de aprendizado prático (Laboratórios 1 a 8), os scripts do projeto final e os registros de testes de usabilidade e validação com voluntários do **Sistema de Detecção e Classificação de Quedas em Tempo Real**.
 
+* 🔗 **[CLIQUE AQUI PARA ACESSAR A PÁGINA INTERATIVA DO PROJETO](https://pahsantana.github.io/LAB-CV2026.2/)**
+
 ---
 
 ## 📌 Sumário
@@ -53,13 +55,29 @@ Este repositório contém a documentação técnica completa, os módulos de apr
 🛠️ Conteúdo dos Laboratórios (Labs)
 
 lab1_arquivos/: Fundamentos de imagem digital, manipulação de matrizes de pixels, conversões de espaços de cores (RGB, HSV, Grayscale) e análise de histogramas
+
+
 .lab2_arquivos/: Operações de filtragem espacial, convoluição 2D, redução de ruído (Blur, Gaussian, Median) e realce de bordas (Sharpening)
+
+
 .lab3_arquivos/: Algoritmos de detecção de descontinuidades, operadores de Sobel, Laplaciano, Canny e extração de formas geométricas via Transformada de Hough
+
+
 .lab4_arquivos/: Morfologia matemática (Erosão, Dilatação, Abertura e Fechamento) e técnicas de segmentação baseadas em limiarização simples, adaptativa e método de Otsu
+
+
 .lab5_arquivos/: Identificação e pareamento de pontos de interesse (Keypoints), descritores invariantes a escala/rotação (SIFT/ORB) e hierarquia de contornos
+
+
 .lab6_arquivos/: Transformações de perspectiva e afins, estimativa da matriz de homografia e calibração de câmeras para correção de distorções ópticas
+
+
 .lab7/: Estimação de vetor de movimento por fluxo óptico denso/esparso (Lucas-Kanade, Farneback) e algoritmos de rastreamento de objetos
+
+
 .lab8_arquivos/: Arquiteturas de Redes Neurais Convolucionais (CNNs) e modelos de detecção em tempo real, servindo de base para o pipeline do projeto final.
+
+
 
 ⚙️ Visão Geral do Projeto Final
 
