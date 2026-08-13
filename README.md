@@ -48,6 +48,8 @@ Este repositório contém a documentação técnica completa, os módulos de apr
 ├── trabalho_final.ipynb            # Notebook principal do projeto (pipeline completo)
 └── README.md                       # Documentação principal do repositório
 
+```
+
 🛠️ Conteúdo dos Laboratórios (Labs)
 
 lab1_arquivos/: Fundamentos de imagem digital, manipulação de matrizes de pixels, conversões de espaços de cores (RGB, HSV, Grayscale) e análise de histogramas
