@@ -70,9 +70,10 @@ Os ensaios práticos realizados no laboratório com voluntários demonstraram a 
 Não registrada  $0,71$ a $1,00$  $0,88$ a $0,99$ (SSDLite320)  Classificação Obtida
 DEITOU_VOLUNTARIAMENTE  Flutuação entre QUEDA e NAO_QUEDA  EVENTO_NAO_CLASSIFICADO_COMO_QUEDA  Conclusão de Usabilidade: Em movimentos de agachamento rápido, picos isolados de velocidade ($5500,0\text{ px/s}$) foram descartados com sucesso (pontuação $2/4$), evitando falsos alarmes em AVDs.  🚀 Instruções de ExecuçãoPré-requisitos:Python 3.9+Jupyter Notebook / JupyterLabPacotes necessários: opencv-python, torch, torchvision, pandas, numpy, matplotlibExecução do Pipeline do Projeto:Bash# Clonar o repositório e acessar a pasta raiz
 
-# Iniciar o Jupyter Notebook
+#### Iniciar o Jupyter Notebook
 jupyter notebook trabalho_final.ipynb
-Análise dos Dados dos Voluntários:Abra o notebook teste_voluntarios/teste-voluntarios-dados.ipynb para visualizar a consolidação gráfica dos logs e métricas da Escala SUS. 
+Análise dos Dados dos Voluntários:
+Abra o notebook teste_voluntarios/teste-voluntarios-dados.ipynb para visualizar a consolidação gráfica dos logs e métricas da Escala SUS. 
 
  📜 Declaração de Integridade e Uso de IA Generativa (Portaria CNPq nº 2.664/2026)
  
