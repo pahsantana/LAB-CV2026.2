@@ -63,6 +63,8 @@ LAB-CV2026.2/
 │   │
 │   ├── trabalho_final.ipynb     ↳ Pipeline completo
 │   └── artigo-grupo1-quedaidosos.pdf
+│   ├── sistema-detector-quedas-slides.pdf  ↳ Apresentação em PDF
+│   └── sistema-detector-quedas.pptx        ↳ Apresentação em PPTX
 │
 ├── 📄 Documentação
 │   ├── index.html               ↳ Interface web
@@ -193,6 +195,8 @@ Visualizará:
 | `artigo-grupo1-quedaidosos.pdf` | 📄 Relatório científico formal |
 | `index.html` | 🌐 Interface interativa web |
 | `roteiro_teste_detector_quedas.pdf` | 📋 Metodologia dos testes |
+| `sistema-detector-quedas-slides.pdf` | 📊 Slides da apresentação da banca (PDF) |
+| `sistema-detector-quedas.pptx` | 📊 Slides da apresentação da banca (PPTX) |
 
 ---
 
